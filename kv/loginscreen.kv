@@ -1,0 +1,95 @@
+#:kivy 2.3.0
+<LoginScreen>:
+    label_judul: label_judul
+    input_email: input_email
+    input_password: input_password
+
+    Label:
+        id: label_judul
+        text: "SISTEM DIGITAL TOKO TERPADU"
+        size_hint_y: None
+        font_size: '20sp'
+        pos_hint: {'center_x': 0.5, 'center_y': 0.9}
+        color: 0, 0, 0, 1
+
+    Image:
+        source: 'asset/logo.png'
+        size_hint: None, None
+        pos_hint: {'center_x': 0.5, 'center_y': 0.75}
+
+    BoxLayout:
+        orientation: 'vertical'
+        size_hint: 0.8, 0.4
+        pos_hint: {'center_x': 0.5, 'center_y': 0.4}
+        padding: 10
+        spacing: 10
+    
+        Label:
+            text: 'Email'
+            size_hint_y: None
+            height: 40
+            color: 0, 0, 0, 1
+            halign: 'left'
+            valign: 'middle'
+            text_size: self.size
+
+        TextInput:
+            id: input_email
+            hint_text: 'Masukkan email'
+            size_hint_y: None
+            height: 40
+            multiline: False
+
+        Label:
+            text: 'Kata Sandi'
+            size_hint_y: None
+            height: 40
+            color: 0, 0, 0, 1
+            halign: 'left'
+            valign: 'middle'
+            text_size: self.size
+
+        BoxLayout:
+            orientation: 'horizontal'
+            size_hint_y: None
+            height: 40
+
+            TextInput:
+                id: input_password
+                hint_text: 'Masukkan Kata Sandi'
+                size_hint_x: 0.9
+                password: True  # Default menyembunyikan password
+                multiline: False
+
+            Button:
+                id: toggle_password
+                backgroun_normal: 'mata.png'
+                background_color: (1,1,1,1)
+                size_hint_x: 0.1
+                on_press: input_password.password = not input_password.password  # Toggle password visibility
+
+        GridLayout:
+            cols: 2
+            padding: 20
+            spacing: 20
+
+            Button:
+                text: 'Masuk'
+                size_hint_y: None
+                height: 50
+                background_normal: ''
+                background_color: (0.396, 0.333, 0.561, 1)  # Warna #65558F
+
+            Button:
+                text: 'Daftar'
+                size_hint_y: None
+                height: 50
+                background_normal: ''
+                background_color: (0.396, 0.333, 0.561, 1)  # Warna #65558F
+
+    Label:
+        text: 'Lupa Kata Sandi?'
+        size_hint_y: None
+        height: 30
+        pos_hint: {'center_x': 0.5, 'center_y': 0.1}
+        color: 0, 0, 0, 1
