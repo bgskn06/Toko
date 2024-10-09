@@ -46,7 +46,7 @@ class HomeScreen(FloatLayout):
         # Grid Kategori
         self.category_layout = GridLayout(cols=5,
                                           size_hint=(0.9, 0.15),
-                                          pos_hint={'center_x': 0.5, 'center_y': 0.35},
+                                          pos_hint={'center_x': 0.5, 'center_y': 0.3},
                                           spacing=10)
 
         for i in range(5):
