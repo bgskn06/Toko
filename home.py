@@ -6,6 +6,9 @@ from kivy.uix.label import Label
 from kivy.uix.button import Button
 from kivy.uix.gridlayout import GridLayout
 from kivy.uix.boxlayout import BoxLayout
+from kivy.core.window import Window
+from kivy.lang import Builder
+import os
 
 class HomeScreen(FloatLayout):
     def __init__(self, **kwargs):
@@ -33,6 +36,7 @@ class HomeScreen(FloatLayout):
         # Gambar Utama di Tengah
         self.main_image = Image(source='placeholder.png',
                                 size_hint=(0.6, 0.4),
+                                color = (0,0,0,1),
                                 pos_hint={'center_x': 0.5, 'center_y': 0.6})
         self.add_widget(self.main_image)
 
@@ -46,7 +50,7 @@ class HomeScreen(FloatLayout):
         # Grid Kategori
         self.category_layout = GridLayout(cols=5,
                                           size_hint=(0.9, 0.15),
-                                          pos_hint={'center_x': 0.5, 'center_y': 0.35},
+                                          pos_hint={'center_x': 0.5, 'center_y': 0.3},
                                           spacing=10)
 
         for i in range(5):
@@ -76,6 +80,8 @@ class HomeScreen(FloatLayout):
 
 class HomeApp(App):
     def build(self):
+        Window.size = (360, 640)
+        Window.clearcolor = (1, 1, 1, 1)
         return HomeScreen()
 
 if __name__ == '__main__':

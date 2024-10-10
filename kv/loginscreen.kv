@@ -63,10 +63,16 @@
 
             Button:
                 id: toggle_password
-                backgroun_normal: 'mata.png'
-                background_color: (1,1,1,1)
+                background_normal: ''
+                background_color: (0,0,0,0.4)
                 size_hint_x: 0.1
                 on_press: input_password.password = not input_password.password  # Toggle password visibility
+                
+                Image:
+                    source: 'asset/mata.png'
+                    size_hint: None,None
+                    size: self.parent.width * 1.0, self.parent.height * 1.0
+                    pos: self.parent.center_x - self.width / 2, self.parent.center_y - self.height / 2
 
         GridLayout:
             cols: 2
