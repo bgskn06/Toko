@@ -78,12 +78,3 @@ class HomeScreen(Screen):
         self.nav_layout.add_widget(self.more_button)
 
         self.add_widget(self.nav_layout)
-
-# class HomeApp(App):
-#     def build(self):
-#         Window.size = (360, 640)
-#         Window.clearcolor = (1, 1, 1, 1)
-#         return HomeScreen()
-
-# if __name__ == '__main__':
-#     HomeApp().run()

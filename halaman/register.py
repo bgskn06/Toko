@@ -93,12 +93,3 @@ class RegisterScreen(Screen):
         self.form_layout.add_widget(self.tombol_daftar)
 
         self.add_widget(self.form_layout)
-
-class myApp(App):
-    def build(self):
-        Window.size = (360, 640)
-        Window.clearcolor = (1, 1, 1, 1)
-        return RegisterScreen()
-    
-if __name__ == '__main__':
-    myApp().run()

@@ -80,6 +80,9 @@
             spacing: 20
 
             Button:
+                on_press:
+                    print("Tombol Login")
+                    app.root.current = 'home'
                 text: 'Masuk'
                 size_hint_y: None
                 height: 50
@@ -87,6 +90,9 @@
                 background_color: (0.396, 0.333, 0.561, 1)
 
             Button:
+                on_press: 
+                    print("Tombol Daftar")
+                    app.root.current = 'register'
                 text: 'Daftar'
                 size_hint_y: None
                 height: 50
