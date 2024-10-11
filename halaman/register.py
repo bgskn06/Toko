@@ -7,9 +7,10 @@ from kivy.uix.button import Button
 from kivy.core.window import Window
 from kivy.lang import Builder
 import os
+from kivy.uix.screenmanager import Screen
 
 
-class RegisterScreen(FloatLayout):
+class RegisterScreen(Screen):
     def __init__(self, **kwargs):
         super(RegisterScreen, self).__init__(**kwargs)
 
