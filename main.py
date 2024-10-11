@@ -1,9 +1,9 @@
 import os
 from kivy.app import App
 from kivy.uix.screenmanager import ScreenManager
-from login import LoginScreen
-from home import HomeScreen
-from register import RegisterScreen
+from halaman.login import LoginScreen
+from halaman.home import HomeScreen
+from halaman.register import RegisterScreen
 
 from kivy.lang import Builder
 from kivy.core.window import Window
