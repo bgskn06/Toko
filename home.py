@@ -9,8 +9,9 @@ from kivy.uix.boxlayout import BoxLayout
 from kivy.core.window import Window
 from kivy.lang import Builder
 import os
+from kivy.uix.screenmanager import Screen
 
-class HomeScreen(FloatLayout):
+class HomeScreen(Screen):
     def __init__(self, **kwargs):
         super(HomeScreen, self).__init__(**kwargs)
 
@@ -78,11 +79,11 @@ class HomeScreen(FloatLayout):
 
         self.add_widget(self.nav_layout)
 
-class HomeApp(App):
-    def build(self):
-        Window.size = (360, 640)
-        Window.clearcolor = (1, 1, 1, 1)
-        return HomeScreen()
+# class HomeApp(App):
+#     def build(self):
+#         Window.size = (360, 640)
+#         Window.clearcolor = (1, 1, 1, 1)
+#         return HomeScreen()
 
-if __name__ == '__main__':
-    HomeApp().run()
+# if __name__ == '__main__':
+#     HomeApp().run()
