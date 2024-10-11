@@ -18,6 +18,7 @@ class MyApp(App):
         kv_path = os.path.join(os.path.dirname(__file__), 'kv')
         Builder.load_file(os.path.join(kv_path, 'loginscreen.kv'))
         Builder.load_file(os.path.join(kv_path, 'pilihtokoscreen.kv'))
+        Builder.load_file(os.path.join(kv_path, 'homescreen.kv'))
 
         sm = MyScreenManager()
         sm.add_widget(LoginScreen(name='login'))
