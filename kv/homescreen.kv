@@ -8,7 +8,7 @@
         BoxLayout:
             orientation: 'horizontal'
             size_hint_y: None
-            height: '50dp'
+            height: '45dp'
             padding: [10, 10]
 
             TextInput:
@@ -71,15 +71,25 @@
             size_hint_y: None
             height: '300dp'  # Tinggikan carousel
             pos_hint: {'center_x': 0.5}
-
+            
             Image:
                 source: 'asset/promo3.png'
+                allow_stretch: True   # Agar gambar mengisi seluruh area
+                keep_ratio: True      # Mempertahankan rasio gambar
+                size_hint: (1, 1)     # Mengisi seluruh area carousel
 
             Image:
                 source: 'asset/promo2.png'
+                allow_stretch: True   # Agar gambar mengisi seluruh area
+                keep_ratio: True      # Mempertahankan rasio gambar
+                size_hint: (1, 1)     # Mengisi seluruh area carousel
 
             Image:
                 source: 'asset/promo1.png'
+                allow_stretch: True   # Agar gambar mengisi seluruh area
+                keep_ratio: True      # Mempertahankan rasio gambar
+                size_hint: (1, 1)     # Mengisi seluruh area carousel
+
 
         Label:
             text: "..."
@@ -117,7 +127,7 @@
                     size: '80dp', '100dp'
 
                     Button:
-                        background_normal: 'assets/category_icon1.png'
+                        background_normal: 'asset/minyak.png'
                         size_hint: None, None
                         size: '60dp', '60dp'
                         pos_hint: {'center_x': 0.5}
@@ -137,7 +147,7 @@
                     size: '80dp', '100dp'
 
                     Button:
-                        background_normal: 'assets/category_icon2.png'
+                        background_normal: 'asset/gula.png'
                         size_hint: None, None
                         size: '60dp', '60dp'
                         pos_hint: {'center_x': 0.5}
@@ -157,7 +167,7 @@
                     size: '80dp', '100dp'
 
                     Button:
-                        background_normal: 'assets/category_icon3.png'
+                        background_normal: 'asset/beras.png'
                         size_hint: None, None
                         size: '60dp', '60dp'
                         pos_hint: {'center_x': 0.5}
@@ -177,7 +187,7 @@
                     size: '80dp', '100dp'
 
                     Button:
-                        background_normal: 'assets/category_icon4.png'
+                        background_normal: 'asset/sabun.png'
                         size_hint: None, None
                         size: '60dp', '60dp'
                         pos_hint: {'center_x': 0.5}
@@ -197,7 +207,7 @@
                     size: '80dp', '100dp'
 
                     Button:
-                        background_normal: 'assets/category_icon5.png'
+                        background_normal: 'asset/gas.png'
                         size_hint: None, None
                         size: '60dp', '60dp'
                         pos_hint: {'center_x': 0.5}
