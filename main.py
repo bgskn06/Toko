@@ -25,7 +25,7 @@ class MyApp(App):
         sm.add_widget(RegisterScreen(name='register'))
         sm.add_widget(HomeScreen(name='home'))
 
-        sm.current = 'login'
+        sm.current = 'home'
 
         return sm
 

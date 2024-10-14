@@ -8,31 +8,61 @@
         BoxLayout:
             orientation: 'horizontal'
             size_hint_y: None
-            height: 40
+            height: '50dp'
+            padding: [10, 10]
 
             TextInput:
                 id : input_barang
                 hint_text: 'Cari...'
                 size_hint_x: 0.15
                 multiline: False
+                pos_hint: {'center_y': 0.5}
 
             Button:
-                text: ''
-                background_normal: 'asset/cari.png'
-                size_hint_x: None
-                width: '50dp'
+                size_hint: None, None
+                width: '30dp'
+                height: '30dp'
+                background_normal: ''
+                background_down: 'asset/cari_pressed.png'
+                Image:
+                    source: 'asset/cari.png'
+                    keep_ratio: True
+                    allow_stretch: False
+                    size_hint: None, None
+                    width: '20dp'
+                    height: '20dp'
+                    center: self.parent.center
 
             Button:
-                text: ''
-                background_normal: 'asset/keranjang.png'
-                size_hint_x: None
-                width: '50dp'
+                size_hint: None, None
+                width: '30dp'
+                height: '30dp'
+                background_normal: ''
+                background_down: 'asset/keranjang_pressed.png'
+                Image:
+                    source: 'asset/keranjang.png'
+                    keep_ratio: True
+                    allow_stretch: False
+                    size_hint: None, None
+                    width: '20dp'
+                    height: '20dp'
+                    center: self.parent.center
 
             Button:
-                text: ''
-                background_normal: 'asset/pesan.png'
-                size_hint_x: None
-                width: '50dp'
+                size_hint: None, None
+                width: '30dp'
+                height: '30dp'
+                background_normal: ''
+                background_down: 'asset/pesan_pressed.png'
+                Image:
+                    source: 'asset/pesan.png'
+                    keep_ratio: True
+                    allow_stretch: False
+                    size_hint: None, None
+                    width: '20dp'
+                    height: '20dp'
+                    center: self.parent.center
+
 
         # Gambar geser di tengah (Carousel)
         Carousel:
@@ -43,13 +73,13 @@
             pos_hint: {'center_x': 0.5}
 
             Image:
-                source: 'assets/image1.png'
+                source: 'asset/promo3.png'
 
             Image:
-                source: 'assets/image2.png'
+                source: 'asset/promo2.png'
 
             Image:
-                source: 'assets/image3.png'
+                source: 'asset/promo1.png'
 
         Label:
             text: "..."
