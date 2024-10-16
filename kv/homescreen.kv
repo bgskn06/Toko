@@ -224,25 +224,79 @@
         BoxLayout:
             size_hint_y: None
             height: '60dp'
-            padding: 10
-            spacing: 10
+            padding: [20, 10]  
+            spacing: 50        
 
             Button:
-                text: 'Home'
+                size_hint: None, None
+                width: '30dp'
+                height: '30dp'
                 background_normal: ''
-                background_color: 0.4, 0.4, 0.4, 1
+                Image:
+                    source: 'asset/home.png'
+                    keep_ratio: True
+                    allow_stretch: False
+                    size_hint: None, None
+                    width: '30dp'
+                    height: '30dp'
+                    center: self.parent.center
+            Button:
+                size_hint: None, None
+                width: '30dp'
+                height: '30dp'
+                background_normal: ''
+                Image:
+                    source: 'asset/toko.png'
+                    keep_ratio: True
+                    allow_stretch: False
+                    size_hint: None, None
+                    width: '30dp'
+                    height: '30dp'
+                    center: self.parent.center
 
             Button:
-                text: 'Toko'
+                size_hint: None, None
+                width: '30dp'
+                height: '30dp'
                 background_normal: ''
-                background_color: 0.4, 0.4, 0.4, 1
-
+                Image:
+                    source: 'asset/histori.png'
+                    keep_ratio: True
+                    allow_stretch: False
+                    size_hint: None, None
+                    width: '30dp'
+                    height: '30dp'
+                    center: self.parent.center
+            
             Button:
-                text: 'Riwayat'
+                size_hint: None, None
+                width: '30dp'
+                height: '30dp'
                 background_normal: ''
-                background_color: 0.4, 0.4, 0.4, 1
+                Image:
+                    source: 'asset/logo.png'
+                    keep_ratio: True
+                    allow_stretch: False
+                    size_hint: None, None
+                    width: '30dp'
+                    height: '30dp'
+                    center: self.parent.center
+            # # Button:
+            # #     text: 'Home'
+            # #     background_normal: ''
+            # #     background_color: 0.4, 0.4, 0.4, 1
 
-            Button:
-                text: 'Profil'
-                background_normal: ''
-                background_color: 0.4, 0.4, 0.4, 1
+            # Button:
+            #     text: 'Toko'
+            #     background_normal: ''
+            #     background_color: 0.4, 0.4, 0.4, 1
+
+            # Button:
+            #     text: 'Riwayat'
+            #     background_normal: ''
+            #     background_color: 0.4, 0.4, 0.4, 1
+
+            # Button:
+            #     text: 'Profil'
+            #     background_normal: ''
+            #     background_color: 0.4, 0.4, 0.4, 1
