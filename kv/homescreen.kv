@@ -8,48 +8,88 @@
         BoxLayout:
             orientation: 'horizontal'
             size_hint_y: None
-            height: 40
+            height: '45dp'
+            padding: [10]
+            spacing: 10
 
             TextInput:
                 id : input_barang
                 hint_text: 'Cari...'
                 size_hint_x: 0.15
                 multiline: False
+                pos_hint: {'center_y': 0.5}
 
             Button:
-                text: ''
-                background_normal: 'asset/cari.png'
-                size_hint_x: None
-                width: '50dp'
+                size_hint: None, None
+                width: '30dp'
+                height: '30dp'
+                background_normal: ''
+                Image:
+                    source: 'asset/cari.png'
+                    keep_ratio: True
+                    allow_stretch: False
+                    size_hint: None, None
+                    width: '20dp'
+                    height: '20dp'
+                    center: self.parent.center
 
             Button:
-                text: ''
-                background_normal: 'asset/keranjang.png'
-                size_hint_x: None
-                width: '50dp'
+                size_hint: None, None
+                width: '30dp'
+                height: '30dp'
+                background_normal: ''
+                Image:
+                    source: 'asset/keranjang.png'
+                    keep_ratio: True
+                    allow_stretch: False
+                    size_hint: None, None
+                    width: '20dp'
+                    height: '20dp'
+                    center: self.parent.center
 
             Button:
-                text: ''
-                background_normal: 'asset/pesan.png'
-                size_hint_x: None
-                width: '50dp'
+                size_hint: None, None
+                width: '30dp'
+                height: '30dp'
+                background_normal: ''
+                Image:
+                    source: 'asset/pesan.png'
+                    keep_ratio: True
+                    allow_stretch: False
+                    size_hint: None, None
+                    width: '20dp'
+                    height: '20dp'
+                    center: self.parent.center
+
 
         # Gambar geser di tengah (Carousel)
         Carousel:
             direction: 'right'
             loop: True
             size_hint_y: None
-            height: '300dp'  # Tinggikan carousel
+            height: '325dp'  # Tinggikan carousel
             pos_hint: {'center_x': 0.5}
+            
+            Image:
+                source: 'asset/promo3.png'
+                allow_stretch: True   # Agar gambar mengisi seluruh area
+                keep_ratio: True      # Mempertahankan rasio gambar
+                size_hint: (1, None)     # Mengisi seluruh area carousel
+                height: '300dp'
 
             Image:
-                source: 'assets/image1.png'
+                source: 'asset/promo2.png'
+                allow_stretch: True   # Agar gambar mengisi seluruh area
+                keep_ratio: True      # Mempertahankan rasio gambar
+                size_hint: (1, None)     # Mengisi seluruh area carousel
+                height: '300dp'
 
             Image:
-                source: 'assets/image2.png'
-
-            Image:
-                source: 'assets/image3.png'
+                source: 'asset/promo1.png'
+                allow_stretch: True   # Agar gambar mengisi seluruh area
+                keep_ratio: True      # Mempertahankan rasio gambar
+                size_hint: (1, None)     # Mengisi seluruh area carousel
+                height: '300dp'
 
         Label:
             text: "..."
@@ -87,7 +127,7 @@
                     size: '80dp', '100dp'
 
                     Button:
-                        background_normal: 'assets/category_icon1.png'
+                        background_normal: 'asset/minyak.png'
                         size_hint: None, None
                         size: '60dp', '60dp'
                         pos_hint: {'center_x': 0.5}
@@ -107,7 +147,7 @@
                     size: '80dp', '100dp'
 
                     Button:
-                        background_normal: 'assets/category_icon2.png'
+                        background_normal: 'asset/gula.png'
                         size_hint: None, None
                         size: '60dp', '60dp'
                         pos_hint: {'center_x': 0.5}
@@ -127,7 +167,7 @@
                     size: '80dp', '100dp'
 
                     Button:
-                        background_normal: 'assets/category_icon3.png'
+                        background_normal: 'asset/beras.png'
                         size_hint: None, None
                         size: '60dp', '60dp'
                         pos_hint: {'center_x': 0.5}
@@ -147,7 +187,7 @@
                     size: '80dp', '100dp'
 
                     Button:
-                        background_normal: 'assets/category_icon4.png'
+                        background_normal: 'asset/sabun.png'
                         size_hint: None, None
                         size: '60dp', '60dp'
                         pos_hint: {'center_x': 0.5}
@@ -167,7 +207,7 @@
                     size: '80dp', '100dp'
 
                     Button:
-                        background_normal: 'assets/category_icon5.png'
+                        background_normal: 'asset/gas.png'
                         size_hint: None, None
                         size: '60dp', '60dp'
                         pos_hint: {'center_x': 0.5}
@@ -184,25 +224,65 @@
         BoxLayout:
             size_hint_y: None
             height: '60dp'
-            padding: 10
-            spacing: 10
+            padding: [20, 20]  
+            spacing: 10        
 
             Button:
-                text: 'Home'
+                size_hint: None, None
+                size_hint_x: 1
+                width: '30dp'
+                height: '30dp'
                 background_normal: ''
-                background_color: 0.4, 0.4, 0.4, 1
+                Image:
+                    source: 'asset/home.png'
+                    keep_ratio: True
+                    allow_stretch: False
+                    size_hint: None, None
+                    width: '25dp'
+                    height: '25dp'
+                    center: self.parent.center
+            Button:
+                size_hint: None, None
+                size_hint_x: 1
+                width: '30dp'
+                height: '30dp'
+                background_normal: ''
+                Image:
+                    source: 'asset/toko.png'
+                    keep_ratio: True
+                    allow_stretch: False
+                    size_hint: None, None
+                    width: '25dp'
+                    height: '25dp'
+                    center: self.parent.center
 
             Button:
-                text: 'Toko'
+                size_hint: None, None
+                size_hint_x: 1
+                width: '30dp'
+                height: '30dp'
                 background_normal: ''
-                background_color: 0.4, 0.4, 0.4, 1
-
+                Image:
+                    source: 'asset/histori.png'
+                    keep_ratio: True
+                    allow_stretch: False
+                    size_hint: None, None
+                    width: '25dp'
+                    height: '25dp'
+                    center: self.parent.center
+            
             Button:
-                text: 'Riwayat'
+                size_hint: None, None
+                size_hint_x: 1
+                width: '30dp'
+                height: '30dp'
                 background_normal: ''
-                background_color: 0.4, 0.4, 0.4, 1
-
-            Button:
-                text: 'Profil'
-                background_normal: ''
-                background_color: 0.4, 0.4, 0.4, 1
+                Image:
+                    source: 'asset/logo.png'
+                    keep_ratio: True
+                    allow_stretch: False
+                    size_hint: None, None
+                    width: '25dp'
+                    height: '25dp'
+                    center: self.parent.center
+            

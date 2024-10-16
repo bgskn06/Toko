@@ -1,4 +1,5 @@
 #:kivy 2.3.0
+
 <PilihTokoScreen>:
     BoxLayout:
         orientation: 'vertical'
@@ -8,30 +9,62 @@
         size_hint_y: None
         height: self.minimum_height  # Dinamis menyesuaikan dengan konten
 
+        # Pencarian dan ikon
         BoxLayout:
             orientation: 'horizontal'
             size_hint_y: None
-            height: 70
-            padding: 10
+            height: '45dp'
+            padding: [10]
+            spacing: 10
 
-            canvas.before:
-                Color:
-                    rgb: 0, 0, 0  # Border color
-                Line:
-                    width: 0.5
-                    rectangle: self.x, self.y, self.width, self.height
+            TextInput:
+                id : input_barang
+                hint_text: 'Cari...'
+                size_hint_x: 0.15
+                multiline: False
+                pos_hint: {'center_y': 0.5}
 
-            Image:
-                source: 'logo.png'
+            Button:
                 size_hint: None, None
-                size: 50, 50
-                padding: 10
+                width: '30dp'
+                height: '30dp'
                 background_normal: ''
+                Image:
+                    source: 'asset/cari.png'
+                    keep_ratio: True
+                    allow_stretch: False
+                    size_hint: None, None
+                    width: '20dp'
+                    height: '20dp'
+                    center: self.parent.center
 
-            BoxLayout:
-                orientation: 'vertical'
-                size_hint_y: None
-                height: 50
+            Button:
+                size_hint: None, None
+                width: '30dp'
+                height: '30dp'
+                background_normal: ''
+                Image:
+                    source: 'asset/keranjang.png'
+                    keep_ratio: True
+                    allow_stretch: False
+                    size_hint: None, None
+                    width: '20dp'
+                    height: '20dp'
+                    center: self.parent.center
+
+            Button:
+                size_hint: None, None
+                width: '30dp'
+                height: '30dp'
+                background_normal: ''
+                Image:
+                    source: 'asset/pesan.png'
+                    keep_ratio: True
+                    allow_stretch: False
+                    size_hint: None, None
+                    width: '20dp'
+                    height: '20dp'
+                    center: self.parent.center
 
                 Label:
                     text: '[b]Toko A[/b]'  # Nama toko bold menggunakan markup
