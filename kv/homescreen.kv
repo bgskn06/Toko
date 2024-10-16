@@ -228,6 +228,9 @@
             spacing: 10        
 
             Button:
+                on_press: 
+                    print("Tombol Home")
+                    app.root.current = 'home'
                 size_hint: None, None
                 size_hint_x: 1
                 width: '30dp'
@@ -242,6 +245,9 @@
                     height: '25dp'
                     center: self.parent.center
             Button:
+                on_press: 
+                    print("Tombol Toko")
+                    app.root.current = 'toko'
                 size_hint: None, None
                 size_hint_x: 1
                 width: '30dp'

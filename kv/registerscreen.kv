@@ -102,6 +102,9 @@
             multiline: False
 
         Button:
+            on_press: 
+                print("Tombol Daftar")
+                app.root.current = 'login'
             id: tombol_daftar
             text: 'Daftar'
             size_hint_y: None

@@ -1,6 +1,6 @@
 #:kivy 2.3.0
 
-<PilihTokoScreen>:
+<TokoScreen>:
     BoxLayout:
         orientation: 'vertical'
 
@@ -70,105 +70,71 @@
                 size_hint_y: None
                 height: self.minimum_height
 
-                # GridLayout untuk menambahkan elemen dengan gambar dan teks
-                GridLayout:
-                    cols: 3  # Atur jumlah kolom dalam grid
-                    row_default_height: 150
-                    row_force_default: True
-                    size_hint_y: None
-                    height: self.minimum_height  # Sesuaikan tinggi berdasarkan elemen di dalamnya
-                    padding: 10
+                # Konten pertama (card toko)
+                BoxLayout:
+                    orientation: 'horizontal'
+                    padding: [10, 10]
                     spacing: 10
+                    size_hint_y: None
+                    height: '80dp'  # Tetap menjaga tinggi card yang sama
 
+                    # Menambahkan border dengan Canvas
+                    canvas.before:
+                        Color:
+                            rgba: 0, 0, 0, 1  # Warna border hitam
+                        Line:
+                            width: 0.5  # Ketebalan border
+                            rounded_rectangle: (self.x, self.y, self.width, self.height, 10)  # Sudut membulat
+
+                    # Logo Toko di sebelah kiri
+                    Image:
+                        source: 'asset/logo_toko.png'  # Ganti dengan path logo toko Anda
+                        size_hint: None, None
+                        width: '78dp'
+                        height: '78dp'
+                        allow_stretch: True
+                        keep_ratio: True
+                        pos_hint: {'center_y': 0.5}
+
+                    # Nama Toko dan Alamat di tengah
                     BoxLayout:
                         orientation: 'vertical'
-                        padding: 10
-                        canvas.before:
-                            Color:
-                                rgb: 0, 0, 0  # Warna border hitam
-                            Line:
-                                width: 1.5
-                                rounded_rectangle: (self.x, self.y, self.width, self.height, 10)  # Border melengkung dengan radius 10
-
-                        Image:
-                            source: 'product1.png'
-                            size_hint: None, None
-                            size: 100, 100
+                        spacing: 5
+                        size_hint_y: None
+                        height: '60dp'
+                        pos_hint: {'center_y': 0.5}
 
                         Label:
-                            text: 'Produk 1'
-                            color: 0, 0, 0, 1
-                            halign: 'center'
-                            valign: 'center'
+                            text: 'Nama Toko'  # Ganti dengan nama toko Anda
+                            font_size: '16sp'
+                            bold: True
+                            color: 0, 0, 0, 1  # Warna hitam untuk teks
+                            size_hint_y: None
+                            height: '30dp'
+                            halign: 'left'
+                            valign: 'middle'
                             text_size: self.size
-
-                    BoxLayout:
-                        orientation: 'vertical'
-                        padding: 10
-                        canvas.before:
-                            Color:
-                                rgb: 0, 0, 0  # Warna border hitam
-                            Line:
-                                width: 1.5
-                                rounded_rectangle: (self.x, self.y, self.width, self.height, 10)  # Border melengkung dengan radius 10
-
-                        Image:
-                            source: 'product2.png'
-                            size_hint: None, None
-                            size: 100, 100
 
                         Label:
-                            text: 'Produk 2'
-                            color: 0, 0, 0, 1
-                            halign: 'center'
-                            valign: 'center'
+                            text: 'Alamat Toko'  # Ganti dengan alamat toko Anda
+                            font_size: '14sp'
+                            color: 0, 0, 0, 1  # Warna hitam untuk teks
+                            size_hint_y: None
+                            height: '30dp'
+                            halign: 'left'
+                            valign: 'middle'
                             text_size: self.size
 
-                    BoxLayout:
-                        orientation: 'vertical'
-                        padding: 10
-                        canvas.before:
-                            Color:
-                                rgb: 0, 0, 0  # Warna border hitam
-                            Line:
-                                width: 1.5
-                                rounded_rectangle: (self.x, self.y, self.width, self.height, 10)  # Border melengkung dengan radius 10
+                    # Tombol Pilih di sebelah kanan
+                    Button:
+                        text: 'Pilih'
+                        size_hint: None, None
+                        size_hint_x: None
+                        width: '70dp'  # Atur lebar tombol pilih sesuai kebutuhan
+                        height: '40dp'
+                        on_press: app.root.current = 'pilihtoko'  # Aksi ketika tombol diklik
 
-                        Image:
-                            source: 'product3.png'
-                            size_hint: None, None
-                            size: 100, 100
-
-                        Label:
-                            text: 'Produk 3'
-                            color: 0, 0, 0, 1
-                            halign: 'center'
-                            valign: 'center'
-                            text_size: self.size
-
-                    BoxLayout:
-                        orientation: 'vertical'
-                        padding: 10
-                        canvas.before:
-                            Color:
-                                rgb: 0, 0, 0  # Warna border hitam
-                            Line:
-                                width: 1.5
-                                rounded_rectangle: (self.x, self.y, self.width, self.height, 10)  # Border melengkung dengan radius 10
-
-                        Image:
-                            source: 'product4.png'
-                            size_hint: None, None
-                            size: 100, 100
-
-                        Label:
-                            text: 'Produk 4'
-                            color: 0, 0, 0, 1
-                            halign: 'center'
-                            valign: 'center'
-                            text_size: self.size
-
-                        # Tambahkan lebih banyak konten jika diperlukan
+                # Tambahkan lebih banyak konten jika diperlukan
 
         # Navigasi Bawah
         BoxLayout:
