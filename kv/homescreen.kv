@@ -9,7 +9,8 @@
             orientation: 'horizontal'
             size_hint_y: None
             height: '45dp'
-            padding: [10, 10]
+            padding: [10]
+            spacing: 10
 
             TextInput:
                 id : input_barang
@@ -66,27 +67,29 @@
             direction: 'right'
             loop: True
             size_hint_y: None
-            height: '300dp'  # Tinggikan carousel
+            height: '325dp'  # Tinggikan carousel
             pos_hint: {'center_x': 0.5}
             
             Image:
                 source: 'asset/promo3.png'
                 allow_stretch: True   # Agar gambar mengisi seluruh area
                 keep_ratio: True      # Mempertahankan rasio gambar
-                size_hint: (1, 1)     # Mengisi seluruh area carousel
+                size_hint: (1, None)     # Mengisi seluruh area carousel
+                height: '300dp'
 
             Image:
                 source: 'asset/promo2.png'
                 allow_stretch: True   # Agar gambar mengisi seluruh area
                 keep_ratio: True      # Mempertahankan rasio gambar
-                size_hint: (1, 1)     # Mengisi seluruh area carousel
+                size_hint: (1, None)     # Mengisi seluruh area carousel
+                height: '300dp'
 
             Image:
                 source: 'asset/promo1.png'
                 allow_stretch: True   # Agar gambar mengisi seluruh area
                 keep_ratio: True      # Mempertahankan rasio gambar
-                size_hint: (1, 1)     # Mengisi seluruh area carousel
-
+                size_hint: (1, None)     # Mengisi seluruh area carousel
+                height: '300dp'
 
         Label:
             text: "..."
@@ -221,11 +224,12 @@
         BoxLayout:
             size_hint_y: None
             height: '60dp'
-            padding: [20, 10]  
-            spacing: 50        
+            padding: [20, 20]  
+            spacing: 10        
 
             Button:
                 size_hint: None, None
+                size_hint_x: 1
                 width: '30dp'
                 height: '30dp'
                 background_normal: ''
@@ -234,11 +238,12 @@
                     keep_ratio: True
                     allow_stretch: False
                     size_hint: None, None
-                    width: '30dp'
-                    height: '30dp'
+                    width: '25dp'
+                    height: '25dp'
                     center: self.parent.center
             Button:
                 size_hint: None, None
+                size_hint_x: 1
                 width: '30dp'
                 height: '30dp'
                 background_normal: ''
@@ -247,12 +252,13 @@
                     keep_ratio: True
                     allow_stretch: False
                     size_hint: None, None
-                    width: '30dp'
-                    height: '30dp'
+                    width: '25dp'
+                    height: '25dp'
                     center: self.parent.center
 
             Button:
                 size_hint: None, None
+                size_hint_x: 1
                 width: '30dp'
                 height: '30dp'
                 background_normal: ''
@@ -261,12 +267,13 @@
                     keep_ratio: True
                     allow_stretch: False
                     size_hint: None, None
-                    width: '30dp'
-                    height: '30dp'
+                    width: '25dp'
+                    height: '25dp'
                     center: self.parent.center
             
             Button:
                 size_hint: None, None
+                size_hint_x: 1
                 width: '30dp'
                 height: '30dp'
                 background_normal: ''
@@ -275,25 +282,7 @@
                     keep_ratio: True
                     allow_stretch: False
                     size_hint: None, None
-                    width: '30dp'
-                    height: '30dp'
+                    width: '25dp'
+                    height: '25dp'
                     center: self.parent.center
-            # # Button:
-            # #     text: 'Home'
-            # #     background_normal: ''
-            # #     background_color: 0.4, 0.4, 0.4, 1
-
-            # Button:
-            #     text: 'Toko'
-            #     background_normal: ''
-            #     background_color: 0.4, 0.4, 0.4, 1
-
-            # Button:
-            #     text: 'Riwayat'
-            #     background_normal: ''
-            #     background_color: 0.4, 0.4, 0.4, 1
-
-            # Button:
-            #     text: 'Profil'
-            #     background_normal: ''
-            #     background_color: 0.4, 0.4, 0.4, 1
+            
