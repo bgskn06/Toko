@@ -1,0 +1,176 @@
+#:kivy 2.3.0
+
+<AkunScreen>:
+    BoxLayout:
+        orientation: 'vertical'
+        
+        # Bagian Logo di atas
+        Widget: 
+            size_hint_y: 0.4
+        Image:
+            source: 'asset/logo.png'
+            size_hint: None, None
+            size: '150dp', '150dp'  # Ukuran logo
+            pos_hint: {'center_x': 0.5}
+        
+        Widget:
+            size_hint_y: 0.2
+        
+        BoxLayout:
+            orientation: 'vertical'
+            pos_hint: {'center_x': 0.5}
+
+            BoxLayout:
+                orientation: 'horizontal'
+                size_hint: 0.8, None
+                height: 25
+                pos_hint: {'center_x': 0.5}
+                padding: 10
+                spacing: 10
+            
+                Label:
+                    text: 'Nama   :'
+                    size_hint_y: None
+                    height: 20
+                    color: 0, 0, 0, 1
+                    halign: 'left'
+                    valign: 'middle'
+                    text_size: self.size
+                Label:
+                    text: 'John Doe'
+                    size_hint_y: None
+                    height: 20
+                    color: 0, 0, 0, 1
+                    halign: 'left'
+                    valign: 'middle'
+                    text_size: self.size
+
+            BoxLayout:
+                orientation: 'horizontal'
+                size_hint: 0.8, None
+                height: 25
+                pos_hint: {'center_x': 0.5}
+                padding: 10
+                spacing: 10
+            
+                Label:
+                    text: 'Alamat :'
+                    size_hint_y: None
+                    height: 20
+                    color: 0, 0, 0, 1
+                    halign: 'left'
+                    valign: 'middle'
+                    text_size: self.size
+                Label:
+                    text: 'Jl. Sutowijoyo 8'
+                    size_hint_y: None
+                    height: 20
+                    color: 0, 0, 0, 1
+                    halign: 'left'
+                    valign: 'middle'
+                    text_size: self.size
+            BoxLayout:
+                orientation: 'horizontal'
+                size_hint: 0.8, None
+                height: 25
+                pos_hint: {'center_x': 0.5}
+                padding: 10
+                spacing: 10
+            
+                Label:
+                    text: 'No Hp   :'
+                    size_hint_y: None
+                    height: 20
+                    color: 0, 0, 0, 1
+                    halign: 'left'
+                    valign: 'middle'
+                    text_size: self.size
+                Label:
+                    text: '083012318247'
+                    size_hint_y: None
+                    height: 20
+                    color: 0, 0, 0, 1
+                    halign: 'left'
+                    valign: 'middle'
+                    text_size: self.size
+
+            Widget:
+                size_hint_y: 0.2
+
+
+        # Bagian Tombol Navigasi di bawah
+        BoxLayout:
+            size_hint_y: None
+            height: '60dp'
+            padding: [20, 20]  
+            spacing: 10        
+
+            Button:
+                on_press: 
+                    print("Tombol Home")
+                    app.root.current = 'home'
+                size_hint: None, None
+                size_hint_x: 1
+                width: '30dp'
+                height: '30dp'
+                background_normal: ''
+                Image:
+                    source: 'asset/home.png'
+                    keep_ratio: True
+                    allow_stretch: False
+                    size_hint: None, None
+                    width: '25dp'
+                    height: '25dp'
+                    center: self.parent.center
+            Button:
+                on_press: 
+                    print("Tombol Toko")
+                    app.root.current = 'toko'
+                size_hint: None, None
+                size_hint_x: 1
+                width: '30dp'
+                height: '30dp'
+                background_normal: ''
+                Image:
+                    source: 'asset/toko.png'
+                    keep_ratio: True
+                    allow_stretch: False
+                    size_hint: None, None
+                    width: '25dp'
+                    height: '25dp'
+                    center: self.parent.center
+
+            Button:
+                on_press: 
+                    print("Tombol Histori")
+                    app.root.current = "pesanan"
+                size_hint_x: 1
+                width: '30dp'
+                height: '30dp'
+                background_normal: ''
+                Image:
+                    source: 'asset/histori.png'
+                    keep_ratio: True
+                    allow_stretch: False
+                    size_hint: None, None
+                    width: '25dp'
+                    height: '25dp'
+                    center: self.parent.center
+            
+            Button:
+                on_press: 
+                    print("Tombol Akun")
+                    app.root.current = "akun"
+                size_hint: None, None
+                size_hint_x: 1
+                width: '30dp'
+                height: '30dp'
+                background_normal: ''
+                Image:
+                    source: 'asset/logo.png'
+                    keep_ratio: True
+                    allow_stretch: False
+                    size_hint: None, None
+                    width: '25dp'
+                    height: '25dp'
+                    center: self.parent.center

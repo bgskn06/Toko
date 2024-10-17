@@ -174,11 +174,11 @@
         BoxLayout:
             size_hint_y: None
             height: '60dp'
-            padding: [20, 20]
-            spacing: 10
+            padding: [20, 20]  
+            spacing: 10        
 
             Button:
-                on_press:
+                on_press: 
                     print("Tombol Home")
                     app.root.current = 'home'
                 size_hint: None, None
@@ -194,9 +194,8 @@
                     width: '25dp'
                     height: '25dp'
                     center: self.parent.center
-
             Button:
-                on_press:
+                on_press: 
                     print("Tombol Toko")
                     app.root.current = 'toko'
                 size_hint: None, None
@@ -214,7 +213,9 @@
                     center: self.parent.center
 
             Button:
-                size_hint: None, None
+                on_press: 
+                    print("Tombol Histori")
+                    app.root.current = "pesanan"
                 size_hint_x: 1
                 width: '30dp'
                 height: '30dp'
@@ -227,8 +228,11 @@
                     width: '25dp'
                     height: '25dp'
                     center: self.parent.center
-
+            
             Button:
+                on_press: 
+                    print("Tombol Akun")
+                    app.root.current = "akun"
                 size_hint: None, None
                 size_hint_x: 1
                 width: '30dp'

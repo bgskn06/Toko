@@ -280,6 +280,9 @@
                     center: self.parent.center
             
             Button:
+                on_press: 
+                    print("Tombol Akun")
+                    app.root.current = "akun"
                 size_hint: None, None
                 size_hint_x: 1
                 width: '30dp'

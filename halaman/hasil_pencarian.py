@@ -7,6 +7,8 @@ from kivy.uix.button import Button
 from kivy.uix.boxlayout import BoxLayout
 from kivy.uix.gridlayout import GridLayout
 from kivy.uix.scrollview import ScrollView
+from kivy.core.window import Window
+
 
 class HasilPencarianScreen(FloatLayout):
     def __init__(self, **kwargs):
@@ -101,6 +103,8 @@ class HasilPencarianScreen(FloatLayout):
 
 class HasilPencarianApp(App):
     def build(self):
+        Window.size = (360,640)
+        Window.clearcolor = (1, 1, 1, 1)
         return HasilPencarianScreen()
 
 if __name__ == '__main__':
