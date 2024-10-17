@@ -69,8 +69,8 @@
                 spacing: 10
                 size_hint_y: None
                 height: self.minimum_height
-            
-            # Konten
+
+                # Konten
                 BoxLayout:
                     orientation: 'horizontal'
                     padding: [10, 10]
@@ -96,7 +96,24 @@
                         keep_ratio: True
                         pos_hint: {'center_y': 0.5}
 
-                    # Nama Toko dan Alamat di tengah
+                    BoxLayout:
+                        orientation: 'vertical'
+                        spacing: 5
+                        size_hint_y: None
+                        height: '60dp'
+                        pos_hint: {'center_y': 1}
+
+                        Label:
+                            text: 'Nama Barang'  # Ganti dengan nama barang Anda
+                            font_size: '16sp'
+                            bold: True
+                            color: 0, 0, 0, 1  # Warna hitam untuk teks
+                            size_hint_y: None
+                            height: '30dp'
+                            halign: 'left'
+                            valign: 'top'
+                            text_size: self.size
+
                     BoxLayout:
                         orientation: 'vertical'
                         spacing: 5
@@ -105,34 +122,56 @@
                         pos_hint: {'center_y': 0.5}
 
                         Label:
-                            text: 'Nama Toko'  # Ganti dengan nama toko Anda
-                            font_size: '16sp'
+                            text: 'x2'
+                            font_size: '10sp'
+                            color: 0, 0, 0, 1  # Warna hitam untuk teks
+                            size_hint_y: None
+                            height: '20dp'
+                            halign: 'right'
+                            valign: 'middle'
+                            text_size: self.size
+                        Label:
+                            text: 'Rp. 20.000'
+                            font_size: '10sp'
                             bold: True
                             color: 0, 0, 0, 1  # Warna hitam untuk teks
                             size_hint_y: None
-                            height: '30dp'
-                            halign: 'left'
+                            height: '20dp'
+                            halign: 'right'
                             valign: 'middle'
                             text_size: self.size
 
                         Label:
-                            text: 'Alamat Toko'  # Ganti dengan alamat toko Anda
-                            font_size: '14sp'
+                            text: 'Total : Rp. 40.000'
+                            font_size: '10sp'
+                            bold: True
                             color: 0, 0, 0, 1  # Warna hitam untuk teks
                             size_hint_y: None
-                            height: '30dp'
-                            halign: 'left'
+                            height: '20dp'
+                            halign: 'right'
                             valign: 'middle'
                             text_size: self.size
 
-                    # Tombol Pilih di sebelah kanan
-                    Button:
-                        text: 'Pilih'
-                        size_hint: None, None
+                # Tombol Beli Lagi di bawah card
+                BoxLayout:
+                    orientation: 'horizontal'
+                    size_hint_y: None
+                    pos_hint: {'center_x': 0.8}
+                    height: '50dp'
+                    padding: 10
+                    spacing: 10
+
+                    Label:  # Label kosong untuk memberikan ruang di kiri
                         size_hint_x: None
-                        width: '70dp'  # Atur lebar tombol pilih sesuai kebutuhan
-                        height: '40dp'
-                        on_press: app.root.current = 'pilihtoko'  # Aksi ketika tombol diklik
+                        width: '100dp'  # Ukuran label untuk memberi ruang
+
+                    Button:
+                        text: 'Beli Lagi'
+                        size_hint_x: None
+                        width: '100dp'  # Sesuaikan lebar tombol
+                        height: '50dp'
+                        on_press: 
+                            print("Tombol Beli Lagi ditekan")
 
         # Navigasi Bawah
         BoxLayout:

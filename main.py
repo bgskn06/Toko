@@ -7,6 +7,7 @@ from halaman.register import RegisterScreen
 from halaman.pilih_toko import PilihTokoScreen
 from halaman.toko import TokoScreen
 from halaman.hasil_pencarian import HasilPencarianScreen
+from halaman.pesanan import PesananScreen
 
 from kivy.lang import Builder
 from kivy.core.window import Window
@@ -23,6 +24,7 @@ class MyApp(App):
         Builder.load_file(os.path.join(kv_path, 'pilihtokoscreen.kv'))
         Builder.load_file(os.path.join(kv_path, 'homescreen.kv'))
         Builder.load_file(os.path.join(kv_path, 'registerscreen.kv'))
+        Builder.load_file(os.path.join(kv_path, 'pesananscreen.kv'))
 
         sm = MyScreenManager()
         sm.add_widget(LoginScreen(name='login'))
@@ -30,6 +32,7 @@ class MyApp(App):
         sm.add_widget(HomeScreen(name='home'))
         sm.add_widget(PilihTokoScreen(name='pilihtoko'))
         sm.add_widget(TokoScreen(name='toko'))
+        sm.add_widget(PesananScreen(name='pesanan'))
 
         sm.current = 'login'
 
