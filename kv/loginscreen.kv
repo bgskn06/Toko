@@ -80,9 +80,7 @@
             spacing: 20
 
             Button:
-                on_press:
-                    print("Tombol Login")
-                    app.root.current = 'home'
+                on_release: root.login(input_email.text, input_password.text)
                 text: 'Masuk'
                 size_hint_y: None
                 height: 50

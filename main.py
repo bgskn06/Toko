@@ -10,8 +10,10 @@ from halaman.hasil_pencarian import HasilPencarianScreen
 from halaman.pesanan import PesananScreen
 from halaman.akun import AkunScreen
 
+
 from kivy.lang import Builder
 from kivy.core.window import Window
+
 
 class MyScreenManager(ScreenManager):
     pass

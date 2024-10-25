@@ -6,7 +6,6 @@
     input_password: input_password
     input_alamat: input_alamat
     input_noHp: input_noHp
-    input_role: input_role
     tombol_daftar: tombol_daftar
 
     Label:
@@ -86,25 +85,9 @@
             height: 40
             multiline: False
 
-        Label:
-            text: 'Daftar Sebagai'
-            size_hint_y: None
-            height: 40
-            color: 0, 0, 0, 1
-            halign: 'left'
-            text_size: self.size
-
-        TextInput:
-            id: input_role
-            hint_text: 'Pembeli / Penjual'
-            size_hint_y: None
-            height: 40
-            multiline: False
-
         Button:
-            on_press: 
-                print("Tombol Daftar")
-                app.root.current = 'login'
+            on_release: 
+                root.register(input_email.text, input_password.text, input_alamat.text, input_noHp.text)
             id: tombol_daftar
             text: 'Daftar'
             size_hint_y: None
