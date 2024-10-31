@@ -10,6 +10,8 @@ from halaman.pesanan import PesananScreen
 from halaman.akun import AkunScreen
 from halaman.hasil_pencarian import PencarianScreen
 from halaman.detail_produk import DetailScreen
+from halaman.keranjang import KeranjangScreen
+from halaman.chat import ChatScreen
 
 from kivy.lang import Builder
 from kivy.core.window import Window
@@ -32,6 +34,8 @@ class MyApp(App):
         Builder.load_file(os.path.join(kv_path, 'tokoscreen.kv'))
         Builder.load_file(os.path.join(kv_path, 'pencarianscreen.kv'))
         Builder.load_file(os.path.join(kv_path, 'detailscreen.kv'))
+        Builder.load_file(os.path.join(kv_path, 'keranjangscreen.kv'))
+        Builder.load_file(os.path.join(kv_path, 'chatscreen.kv'))
 
         sm = MyScreenManager()
         sm.add_widget(LoginScreen(name='login'))
@@ -43,8 +47,10 @@ class MyApp(App):
         sm.add_widget(AkunScreen(name='akun'))
         sm.add_widget(PencarianScreen(name='pencarian'))
         sm.add_widget(DetailScreen(name='detail'))
+        sm.add_widget(KeranjangScreen(name='keranjang'))
+        sm.add_widget(ChatScreen(name='chat'))
 
-        sm.current = 'home'
+        sm.current = 'login'
 
         return sm
 

@@ -1,2 +1,168 @@
 #:kivy 2.3.0
 <DetailScreen>:
+    # Kotak utama dengan border melengkung
+    BoxLayout:
+        orientation: 'vertical'
+        padding: 10
+        spacing: 10
+        canvas.before:
+            Color:
+                rgba: 0,0,0,0 # Warna latar belakang putih abu-abu muda
+            RoundedRectangle:
+                pos: self.pos
+                size: self.size
+                radius: [10]  # Radius untuk melengkungkan sudut
+
+        # Bagian atas untuk nama produk dan harga
+        BoxLayout:
+            orientation: 'horizontal'
+            size_hint_y: None
+            height: '50dp'
+
+            Label:
+                text: 'Gas 3Kg'
+                font_size: '18sp'
+                color: 0, 0, 0, 1
+                bold: True
+                size_hint_x: 0.7
+
+            Label:
+                text: '$20'
+                font_size: '16sp'
+                color: 0, 0, 0, 1
+                size_hint_x: 0.3
+                halign: 'right'
+                valign: 'middle'
+                text_size: self.size
+
+        # Gambar produk
+        Image:
+            source: 'asset/gas.png'  # Pastikan path sudah benar
+            allow_stretch: True
+            keep_ratio: True
+            size_hint_y: None
+            height: '150dp'
+
+        # Bagian bawah dengan info stok dan alamat toko
+        BoxLayout:
+            orientation: 'vertical'
+            spacing: 5
+
+            Label:
+                text: 'Gas 3 Kg\\nStok : 25'
+                font_size: '16sp'
+                color: 0, 0, 0, 1
+                halign: 'left'
+                valign: 'top'
+                text_size: self.width, None
+                size_hint_y: None
+                height: self.texture_size[1]
+
+            Label:
+                text: 'Alamat Toko :\\nJl. Ambarawa no 25\\nWa : 08586454841516'
+                font_size: '14sp'
+                color: 0, 0, 0, 1
+                halign: 'left'
+                valign: 'top'
+                text_size: self.width, None
+                size_hint_y: None
+                height: self.texture_size[1]
+
+        # Bagian tombol di bawah
+        BoxLayout:
+            size_hint_y: None
+            height: '50dp'
+            spacing: 10
+
+            Button:
+                text: 'Chat Penjual'
+                background_color: [0.8, 0.8, 0.8, 1]
+                color: 0, 0, 0, 1
+                size_hint_x: 0.5
+                on_press: print("Chat Penjual ditekan")
+
+            Button:
+                text: 'Pesan'
+                background_color: [0.4, 0.4, 0.8, 1]
+                color: 1, 1, 1, 1
+                size_hint_x: 0.5
+                on_press: print("Pesan ditekan")
+
+        # Navigasi Bawah
+        BoxLayout:
+            size_hint_y: None
+            height: '60dp'
+            padding: [20, 20]  
+            spacing: 10        
+
+            Button:
+                on_press: 
+                    print("Tombol Home")
+                    app.root.current = 'home'
+                size_hint: None, None
+                size_hint_x: 1
+                width: '30dp'
+                height: '30dp'
+                background_normal: ''
+                Image:
+                    source: 'asset/home.png'
+                    keep_ratio: True
+                    allow_stretch: False
+                    size_hint: None, None
+                    width: '25dp'
+                    height: '25dp'
+                    center: self.parent.center
+            Button:
+                on_press: 
+                    print("Tombol Toko")
+                    app.root.current = 'toko'
+                size_hint: None, None
+                size_hint_x: 1
+                width: '30dp'
+                height: '30dp'
+                background_normal: ''
+                Image:
+                    source: 'asset/toko.png'
+                    keep_ratio: True
+                    allow_stretch: False
+                    size_hint: None, None
+                    width: '25dp'
+                    height: '25dp'
+                    center: self.parent.center
+
+            Button:
+                on_press: 
+                    print("Tombol Histori")
+                    app.root.current = "pesanan"
+                size_hint_x: 1
+                width: '30dp'
+                height: '30dp'
+                background_normal: ''
+                Image:
+                    source: 'asset/histori.png'
+                    keep_ratio: True
+                    allow_stretch: False
+                    size_hint: None, None
+                    width: '25dp'
+                    height: '25dp'
+                    center: self.parent.center
+            
+            Button:
+                on_press: 
+                    print("Tombol Akun")
+                    app.root.current = "akun"
+                size_hint: None, None
+                size_hint_x: 1
+                width: '30dp'
+                height: '30dp'
+                background_normal: ''
+                Image:
+                    source: 'asset/logo.png'
+                    keep_ratio: True
+                    allow_stretch: False
+                    size_hint: None, None
+                    width: '25dp'
+                    height: '25dp'
+                    center: self.parent.center
+
+

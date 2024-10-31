@@ -1,6 +1,6 @@
 #:kivy 2.3.0
 
-<PilihTokoScreen>:
+<KeranjangScreen>:
     BoxLayout:
         orientation: 'vertical'
 
@@ -61,7 +61,6 @@
                     height: '20dp'
                     center: self.parent.center
 
-        # ScrollView untuk konten yang bisa di-scroll
         ScrollView:
             BoxLayout:
                 orientation: 'vertical'
@@ -70,113 +69,140 @@
                 size_hint_y: None
                 height: self.minimum_height
 
-                # GridLayout untuk menambahkan elemen dengan gambar dan teks
-                GridLayout:
-                    cols: 3  # Atur jumlah kolom dalam grid
-                    row_default_height: 200
-                    row_force_default: True
+                # Nama Toko dan Checkbox
+                BoxLayout:
+                    orientation: 'horizontal'
                     size_hint_y: None
-                    height: self.minimum_height  # Sesuaikan tinggi berdasarkan elemen di dalamnya
-                    padding: 10
+                    height: '30dp'
+                    padding: [10, 0]
                     spacing: 10
 
+                    # CheckBox:
+                    #     size_hint: None, None
+                    #     width: '20dp'
+                    #     height: '20dp'
+                    #     pos_hint: {'center_y': 0.5}
+                    #     background_color: (0, 0, 1, 1)  # Warna latar belakang CheckBox
+                    #     color: (0, 1, 0, 1) 
+                    
+                    Label:
+                        text: 'Nama Toko'
+                        font_size: '16sp'
+                        bold: True
+                        color: 0, 0, 0, 1
+                        size_hint_x: 0.9
+                        halign: 'left'
+                        valign: 'middle'
+                        text_size: self.size
+
+                # Konten Produk
+                BoxLayout:
+                    orientation: 'horizontal'
+                    padding: [10, 10]
+                    spacing: 10
+                    size_hint_y: None
+                    height: '80dp'
+
+                    canvas.before:
+                        Color:
+                            rgba: 0, 0, 0, 1
+                        Line:
+                            width: 0.5
+                            rounded_rectangle: (self.x, self.y, self.width, self.height, 10)
+
+                    CheckBox:
+                        size_hint: None, None
+                        width: '20dp'
+                        height: '20dp'
+                        pos_hint: {'center_y': 0.5}
+                        background_color: (0, 0, 1, 1)  # Warna latar belakang CheckBox
+                        color: (0, 1, 0, 1)
+
+                    # Logo Toko
+                    Image:
+                        source: 'asset/logo_toko.png'
+                        size_hint: None, None
+                        width: '78dp'
+                        height: '78dp'
+                        allow_stretch: True
+                        keep_ratio: True
+                        pos_hint: {'center_y': 0.5}
+
                     BoxLayout:
                         orientation: 'vertical'
-                        padding: 10
-                        canvas.before:
-                            Color:
-                                rgb: 0, 0, 0  # Warna border hitam
-                            Line:
-                                width: 1.5
-                                rounded_rectangle: (self.x, self.y, self.width, self.height, 10)  # Border melengkung dengan radius 10
-
-                        Image:
-                            source: 'asset/gas.png'
-                            size_hint: None, None
-                            size: 100, 100
+                        spacing: 5
+                        size_hint_y: None
+                        height: '60dp'
+                        pos_hint: {'center_y': 1}
 
                         Label:
-                            text: 'Gas 3kg'
+                            text: 'Nama Barang'
+                            font_size: '16sp'
+                            bold: True
                             color: 0, 0, 0, 1
-                            halign: 'center'
-                            valign: 'center'
-                            text_size: self.size
-                        
-                        Button:
-                            on_press: 
-                                print("Tombol Pilih")
-                                app.root.current = "detail"
-                            text: 'Pilih'
                             size_hint_y: None
                             height: '30dp'
-
-                    BoxLayout:
-                        orientation: 'vertical'
-                        padding: 10
-                        canvas.before:
-                            Color:
-                                rgb: 0, 0, 0  # Warna border hitam
-                            Line:
-                                width: 1.5
-                                rounded_rectangle: (self.x, self.y, self.width, self.height, 10)  # Border melengkung dengan radius 10
-
-                        Image:
-                            source: 'asset/minyak.png'
-                            size_hint: None, None
-                            size: 100, 100
-
-                        Label:
-                            text: 'Minyak Sunco'
-                            color: 0, 0, 0, 1
-                            halign: 'center'
-                            valign: 'center'
+                            halign: 'left'
+                            valign: 'top'
                             text_size: self.size
 
                     BoxLayout:
                         orientation: 'vertical'
-                        padding: 10
-                        canvas.before:
-                            Color:
-                                rgb: 0, 0, 0  # Warna border hitam
-                            Line:
-                                width: 1.5
-                                rounded_rectangle: (self.x, self.y, self.width, self.height, 10)  # Border melengkung dengan radius 10
-
-                        Image:
-                            source: 'asset/Gula.png'
-                            size_hint: None, None
-                            size: 100, 100
+                        spacing: 5
+                        size_hint_y: None
+                        height: '60dp'
+                        pos_hint: {'center_y': 0.5}
 
                         Label:
-                            text: 'Gulaku'
+                            text: 'x2'
+                            font_size: '10sp'
                             color: 0, 0, 0, 1
-                            halign: 'center'
-                            valign: 'center'
+                            size_hint_y: None
+                            height: '20dp'
+                            halign: 'right'
+                            valign: 'middle'
                             text_size: self.size
-
-                    BoxLayout:
-                        orientation: 'vertical'
-                        padding: 10
-                        canvas.before:
-                            Color:
-                                rgb: 0, 0, 0  # Warna border hitam
-                            Line:
-                                width: 1.5
-                                rounded_rectangle: (self.x, self.y, self.width, self.height, 10)  # Border melengkung dengan radius 10
-
-                        Image:
-                            source: 'asset/Beras.png'
-                            size_hint: None, None
-                            size: 100, 100
 
                         Label:
-                            text: 'Beras'
+                            text: 'Rp. 20.000'
+                            font_size: '10sp'
+                            bold: True
                             color: 0, 0, 0, 1
-                            halign: 'center'
-                            valign: 'center'
+                            size_hint_y: None
+                            height: '20dp'
+                            halign: 'right'
+                            valign: 'middle'
                             text_size: self.size
 
-                        # Tambahkan lebih banyak konten jika diperlukan
+                        Label:
+                            text: 'Total: Rp. 40.000'
+                            font_size: '10sp'
+                            bold: True
+                            color: 0, 0, 0, 1
+                            size_hint_y: None
+                            height: '20dp'
+                            halign: 'right'
+                            valign: 'middle'
+                            text_size: self.size
+
+        # Tombol di pojok kanan bawah
+        BoxLayout:
+            size_hint_y: None
+            height: '50dp'
+            padding: [10, 10]
+            spacing: 10
+
+            Widget:  # Spacer untuk mendorong tombol ke kanan
+                size_hint_x: None
+                width: self.parent.width - 150  # Menyesuaikan tombol agar tetap di pojok kanan bawah
+
+            Button:
+                text: 'Beli'
+                size_hint: None, None
+                width: '100dp'
+                height: '50dp'
+                pos_hint: {'right': 1, 'bottom': 1}
+                on_press: print("Tombol Beli di Keranjang")
 
         # Navigasi Bawah
         BoxLayout:

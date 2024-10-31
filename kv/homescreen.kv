@@ -37,6 +37,9 @@
                     center: self.parent.center
 
             Button:
+                on_press: 
+                    print("Tombol Keranjang")
+                    app.root.current = "keranjang"
                 size_hint: None, None
                 width: '30dp'
                 height: '30dp'
@@ -51,6 +54,9 @@
                     center: self.parent.center
 
             Button:
+                on_press: 
+                    print("Tombol Pesan")
+                    app.root.current = "chat"
                 size_hint: None, None
                 width: '30dp'
                 height: '30dp'
