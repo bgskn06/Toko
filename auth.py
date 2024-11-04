@@ -13,8 +13,8 @@ class AuthService:
     def login(self, email, password):
         try:
             user = auth.sign_in_with_email_and_password(email, password)
-            user_id = user['localId']
-            role = db.child("users").child(user_id).child("role").get().val()
+            self.user_id = user['localId']
+            role = db.child("users").child(self.user_id).child("role").get().val()
 
             # if role != 'admin':
             #     print("Access Denied: Only admins can access this application.")

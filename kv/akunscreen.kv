@@ -1,140 +1,97 @@
 #:kivy 2.3.0
 
 <AkunScreen>:
+    input_email: input_email
+    input_alamat: input_alamat
+    input_noHp: input_noHp
+
     BoxLayout:
         orientation: 'vertical'
-        
-        # Bagian Logo di atas
-        Widget: 
-            size_hint_y: 0.4
-        Image:
-            source: 'asset/logo.png'
-            size_hint: None, None
-            size: '150dp', '150dp'  # Ukuran logo
-            pos_hint: {'center_x': 0.5}
-        
-        Widget:
-            size_hint_y: 0.2
-        
+        padding: 10
+        spacing: 10
+
+        Label:
+            text: 'Akun Saya'
+            size_hint_y: None
+            height: 50
+            font_size: 24
+            halign: 'center'
+
+        AsyncImage:
+            id: image_preview
+            source: ''
+            allow_stretch: True
+            keep_ratio: True
+            size_hint_y: None
+            height: 150
+            canvas.before:
+                Color:
+                    rgba: 0.9, 0.9, 0.9, 1
+                Rectangle:
+                    pos: self.pos
+                    size: self.size
+
         BoxLayout:
-            orientation: 'vertical'
-            pos_hint: {'center_x': 0.5}
+            size_hint_y: None
+            height: 40
+            spacing: 10
 
-            BoxLayout:
-                orientation: 'horizontal'
-                size_hint: 0.8, None
-                height: 25
-                pos_hint: {'center_x': 0.5}
-                padding: 10
-                spacing: 10
-            
-                Label:
-                    text: 'Nama   :'
-                    size_hint_y: None
-                    height: 20
-                    color: 0, 0, 0, 1
-                    halign: 'left'
-                    valign: 'middle'
-                    text_size: self.size
-                Label:
-                    text: 'John Doe'
-                    size_hint_y: None
-                    height: 20
-                    color: 0, 0, 0, 1
-                    halign: 'left'
-                    valign: 'middle'
-                    text_size: self.size
+            Button:
+                text: 'Pilih Gambar'
+                size_hint_x: 0.5
+                on_press: root.select_image()
 
-            BoxLayout:
-                orientation: 'horizontal'
-                size_hint: 0.8, None
-                height: 25
-                pos_hint: {'center_x': 0.5}
-                padding: 10
-                spacing: 10
-            
-                Label:
-                    text: 'Alamat :'
-                    size_hint_y: None
-                    height: 20
-                    color: 0, 0, 0, 1
-                    halign: 'left'
-                    valign: 'middle'
-                    text_size: self.size
-                Label:
-                    text: 'Jl. Sutowijoyo 8'
-                    size_hint_y: None
-                    height: 20
-                    color: 0, 0, 0, 1
-                    halign: 'left'
-                    valign: 'middle'
-                    text_size: self.size
-            BoxLayout:
-                orientation: 'horizontal'
-                size_hint: 0.8, None
-                height: 25
-                pos_hint: {'center_x': 0.5}
-                padding: 10
-                spacing: 10
-            
-                Label:
-                    text: 'No Hp   :'
-                    size_hint_y: None
-                    height: 20
-                    color: 0, 0, 0, 1
-                    halign: 'left'
-                    valign: 'middle'
-                    text_size: self.size
-                Label:
-                    text: '083012318247'
-                    size_hint_y: None
-                    height: 20
-                    color: 0, 0, 0, 1
-                    halign: 'left'
-                    valign: 'middle'
-                    text_size: self.size
+            Button:
+                text: 'Hapus Gambar'
+                size_hint_x: 0.5
+                on_press: root.clear_image()
 
-            Widget:
-                size_hint_y: 0.2
+        TextInput:
+            id: input_email
+            hint_text: 'Masukkan Email'
+            size_hint_y: None
+            height: 40
+            multiline: False
 
+        TextInput:
+            id: input_alamat
+            hint_text: 'Masukkan Alamat'
+            size_hint_y: None
+            height: 40
+            multiline: False
 
-        # Bagian Tombol Navigasi di bawah
+        TextInput:
+            id: input_noHp
+            hint_text: 'Masukkan No Hp'
+            size_hint_y: None
+            height: 40
+            multiline: False
+
+        BoxLayout:
+            size_hint_y: None
+            height: 50
+            spacing: 10
+
+            Button:
+                text: 'Update'
+                on_press: root.update_user()
+
+        # Navigasi Bawah
         BoxLayout:
             size_hint_y: None
             height: '60dp'
-            padding: [20, 20]  
-            spacing: 10        
+            padding: [20, 20]
+            spacing: 10
 
             Button:
                 on_press: 
-                    print("Tombol Home")
                     app.root.current = 'home'
                 size_hint: None, None
-                size_hint_x: 1
                 width: '30dp'
                 height: '30dp'
                 background_normal: ''
                 Image:
                     source: 'asset/home.png'
-                    keep_ratio: True
-                    allow_stretch: False
-                    size_hint: None, None
-                    width: '25dp'
-                    height: '25dp'
-                    center: self.parent.center
-            Button:
-                on_press: 
-                    print("Tombol Toko")
-                    app.root.current = 'toko'
-                size_hint: None, None
-                size_hint_x: 1
-                width: '30dp'
-                height: '30dp'
-                background_normal: ''
-                Image:
-                    source: 'asset/toko.png'
-                    keep_ratio: True
-                    allow_stretch: False
                     size_hint: None, None
                     width: '25dp'
                     height: '25dp'
@@ -142,35 +99,139 @@
 
             Button:
                 on_press: 
-                    print("Tombol Histori")
+                    app.root.current = 'toko'
+                size_hint: None, None
+                width: '30dp'
+                height: '30dp'
+                background_normal: ''
+                Image:
+                    source: 'asset/toko.png'
+                    size_hint: None, None
+                    width: '25dp'
+                    height: '25dp'
+                    center: self.parent.center
+
+            Button:
+                on_press: 
                     app.root.current = "pesanan"
-                size_hint_x: 1
+                size_hint: None, None
                 width: '30dp'
                 height: '30dp'
                 background_normal: ''
                 Image:
                     source: 'asset/histori.png'
-                    keep_ratio: True
-                    allow_stretch: False
                     size_hint: None, None
                     width: '25dp'
                     height: '25dp'
                     center: self.parent.center
-            
+
             Button:
                 on_press: 
-                    print("Tombol Akun")
                     app.root.current = "akun"
                 size_hint: None, None
-                size_hint_x: 1
                 width: '30dp'
                 height: '30dp'
                 background_normal: ''
                 Image:
                     source: 'asset/logo.png'
-                    keep_ratio: True
-                    allow_stretch: False
                     size_hint: None, None
                     width: '25dp'
                     height: '25dp'
                     center: self.parent.center
+
+
+<EditAkunScreen>:
+    input_email: input_email
+    input_alamat: input_alamat
+    input_noHp: input_noHp
+
+    BoxLayout:
+        orientation: 'vertical'
+        padding: 10
+        spacing: 10
+
+        Label:
+            text: 'Edit Akun'
+            size_hint_y: None
+            height: 50
+            font_size: 24
+            halign: 'center'
+
+        AsyncImage:
+            id: image_preview
+            source: ''
+            allow_stretch: True
+            keep_ratio: True
+            size_hint_y: None
+            height: 150
+            canvas.before:
+                Color:
+                    rgba: 0.9, 0.9, 0.9, 1
+                Rectangle:
+                    pos: self.pos
+                    size: self.size
+        BoxLayout:
+            size_hint_y: None
+            height: 40
+            spacing: 10
+
+            Button:
+                text: 'Pilih Gambar'
+                size_hint_x: 0.5
+                on_press: root.select_image()
+
+            Button:
+                text: 'Hapus Gambar'
+                size_hint_x: 0.5
+                on_press: root.clear_image()
+
+        BoxLayout:
+            size_hint_y: None
+            height: 40
+            spacing: 10
+
+            Button:
+                text: 'Pilih Gambar'
+                size_hint_x: 0.5
+                on_press: root.select_image()
+
+            Button:
+                text: 'Hapus Gambar'
+                size_hint_x: 0.5
+                on_press: root.clear_image()
+
+        TextInput:
+            id: input_email
+            hint_text: 'Masukkan Email'
+            size_hint_y: None
+            height: 40
+            multiline: False
+
+        TextInput:
+            id: input_alamat
+            hint_text: 'Masukkan Alamat'
+            size_hint_y: None
+            height: 40
+            multiline: False
+
+        TextInput:
+            id: input_noHp
+            hint_text: 'Masukkan No Hp'
+            size_hint_y: None
+            height: 40
+            multiline: False
+
+        BoxLayout:
+            size_hint_y: None
+            height: 50
+            spacing: 10
+
+            Button:
+                text: 'Batal'
+                on_press: root.cancel()
+
+            Button:
+                text: 'Update'
+                on_press: root.update_user()
+
+        
