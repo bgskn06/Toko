@@ -6,8 +6,84 @@ from kivy.app import App
 from kivy.uix.filechooser import FileChooserIconView
 from kivy.uix.boxlayout import BoxLayout
 from kivy.uix.button import Button
-from storageakun import StorageManager  # Ensure you have the correct import
+from storageakun import StorageManager  # Pastikan ini adalah impor yang benar
 from databaseakun import Database
+
+class AkunScreen(Screen):
+    input_email = ObjectProperty(None)
+    input_alamat = ObjectProperty(None)
+    input_noHp = ObjectProperty(None)
+    selected_image_path = StringProperty('')  # Menyimpan jalur gambar
+    image_url = StringProperty('')  # Menyimpan URL gambar yang diunggah
+
+    def on_enter(self):
+        self.load_account_info()
+
+    def load_account_info(self):
+        user_id = App.get_running_app().user_id
+        if user_id:
+            user_data = Database.get_user(user_id)
+            if user_data:
+                self.input_email.text = user_data.get('email', '')
+                self.input_alamat.text = user_data.get('alamat', '')
+                self.input_noHp.text = user_data.get('no_hp', '')
+                self.image_url = user_data.get('image_url', '')  # Dapatkan URL gambar
+                self.ids.image_preview.source = self.image_url  # Tampilkan gambar yang tersimpan
+            else:
+                self.show_popup('Error', 'Informasi akun tidak ditemukan.')
+        else:
+            self.show_popup('Error', 'User ID tidak ditemukan.')
+
+    def update_user(self):
+        email = self.input_email.text.strip()
+        alamat = self.input_alamat.text.strip()
+        no_hp = self.input_noHp.text.strip()
+
+        if email and alamat and no_hp:
+            try:
+                updated_data = {
+                    'email': email,
+                    'alamat': alamat,
+                    'no_hp': no_hp,
+                }
+                
+                # Jika gambar baru dipilih, upload gambar dan perbarui URL gambar
+                if self.selected_image_path:
+                    upload_result = StorageManager.upload_image(self.selected_image_path)
+                    if upload_result['status'] == 'success':
+                        updated_data['image_url'] = upload_result['url']  # Simpan URL gambar yang diunggah
+                        self.image_url = upload_result['url']
+                        self.ids.image_preview.source = self.image_url
+                        self.ids.image_preview.reload()
+                    else:
+                        self.show_popup('Error', 'Gagal mengupload gambar: ' + upload_result['message'])
+                
+                Database.update_user(App.get_running_app().user_id, updated_data)
+                self.show_popup('Sukses', 'Informasi akun berhasil diperbarui!')
+            except Exception as e:
+                self.show_popup('Error', f'Terjadi kesalahan: {str(e)}')
+        else:
+            self.show_popup('Error', 'Semua field harus diisi!')
+
+    def show_popup(self, title, content):
+        popup = Popup(
+            title=title,
+            content=Label(text=content),
+            size_hint=(None, None),
+            size=(400, 200)
+        )
+        popup.open()
+
+    def select_image(self):
+        # Membuka ImageChooserPopup
+        popup = ImageChooserPopup(callback=self.on_image_selected)
+        popup.open()
+        
+    def on_image_selected(self, selected_image_path):
+        self.selected_image_path = selected_image_path
+        self.ids.image_preview.source = self.selected_image_path  # Set gambar terpilih ke pratinjau
+        self.ids.image_preview.reload()
+        self.show_popup('Gambar Dipilih', f'Gambar yang dipilih: {self.selected_image_path}')
 
 class ImageChooserPopup(Popup):
     def __init__(self, callback, **kwargs):
@@ -42,149 +118,3 @@ class ImageChooserPopup(Popup):
         if self.file_chooser.selection:
             self.callback(self.file_chooser.selection[0])
             self.dismiss()
-
-class AkunScreen(Screen):
-    input_email = ObjectProperty(None)
-    input_alamat = ObjectProperty(None)
-    input_noHp = ObjectProperty(None)
-    selected_image_path = StringProperty('')  # To hold the image path
-
-    def on_enter(self):
-        self.load_account_info()
-
-    def load_account_info(self):
-        user_id = App.get_running_app().user_id
-        if user_id:
-            user_data = Database.get_user(user_id)
-            if user_data:
-                self.input_email.text = user_data.get('email', '')
-                self.input_alamat.text = user_data.get('alamat', '')
-                self.input_noHp.text = user_data.get('no_hp', '')
-            else:
-                self.show_popup('Error', 'Informasi akun tidak ditemukan.')
-        else:
-            self.show_popup('Error', 'User ID tidak ditemukan.')
-
-    def update_user(self):
-        email = self.input_email.text.strip()
-        alamat = self.input_alamat.text.strip()
-        no_hp = self.input_noHp.text.strip()
-
-        if email and alamat and no_hp:
-            try:
-                updated_data = {
-                    'email': email,
-                    'alamat': alamat,
-                    'no_hp': no_hp
-                }
-                Database.update_user(App.get_running_app().user_id, updated_data)
-                if self.selected_image_path:  # Check if an image is selected
-                    upload_result = StorageManager.upload_image(self.selected_image_path)
-                    if upload_result['status'] == 'success':
-                        self.show_popup('Sukses', 'Informasi akun dan gambar berhasil diperbarui!')
-                    else:
-                        self.show_popup('Error', 'Gagal mengupload gambar: ' + upload_result['message'])
-                else:
-                    self.show_popup('Sukses', 'Informasi akun berhasil diperbarui!')
-            except Exception as e:
-                self.show_popup('Error', f'Terjadi kesalahan: {str(e)}')
-        else:
-            self.show_popup('Error', 'Semua field harus diisi!')
-
-    def show_popup(self, title, content):
-        popup = Popup(
-            title=title,
-            content=Label(text=content),
-            size_hint=(None, None),
-            size=(400, 200)
-        )
-        popup.open()
-
-    def select_image(self):
-        # Open ImageChooserPopup
-        popup = ImageChooserPopup(callback=self.on_image_selected)
-        popup.open()
-        
-    def clear_image(self):
-        self.selected_image_path = ''  # Clear the image path
-        self.ids.image_preview.source = ''  # Clear the image preview
-        self.ids.image_preview.reload()  # Reload the image preview
-
-    def on_image_selected(self, selected_image_path):
-        self.selected_image_path = selected_image_path
-        self.ids.image_preview.source = self.selected_image_path  # Set the selected image to the preview
-        self.ids.image_preview.reload()  # Reload the image preview
-        self.show_popup('Gambar Dipilih', f'Gambar yang dipilih: {self.selected_image_path}')
-
-    def cancel(self):
-        self.manager.current = 'previous_screen'
-
-class EditAkun(Screen):
-    input_email = ObjectProperty(None)
-    input_alamat = ObjectProperty(None)
-    input_noHp = ObjectProperty(None)
-    user_id = StringProperty(None)
-    selected_image_path = StringProperty('')  # To hold the image path
-
-    def on_enter(self):
-        self.load_account_info()
-
-    def load_account_info(self):
-        if self.user_id:
-            user_data = Database.get_user(self.user_id)
-            if user_data:
-                self.input_email.text = user_data.get('email', '')
-                self.input_alamat.text = user_data.get('alamat', '')
-                self.input_noHp.text = user_data.get('no_hp', '')
-            else:
-                self.show_popup('Error', 'Informasi akun tidak ditemukan.')
-
-    def update_user(self):
-        email = self.input_email.text.strip()
-        alamat = self.input_alamat.text.strip()
-        no_hp = self.input_noHp.text.strip()
-
-        if email and alamat and no_hp:
-            try:
-                updated_data = {
-                    'email': email,
-                    'alamat': alamat,
-                    'no_hp': no_hp
-                }
-                Database.update_user(self.user_id, updated_data)
-                if self.selected_image_path:  # Check if an image is selected
-                    upload_result = StorageManager.upload_image(self.selected_image_path)
-                    if upload_result['status'] == 'success':
-                        self.show_popup('Sukses', 'Informasi akun dan gambar berhasil diperbarui!')
-                    else:
-                        self.show_popup('Error', 'Gagal mengupload gambar: ' + upload_result['message'])
-                else:
-                    self.show_popup('Sukses', 'Informasi akun berhasil diperbarui!')
-                self.manager.current = 'akun_screen'
-            except Exception as e:
-                self.show_popup('Error', f'Terjadi kesalahan: {str(e)}')
-        else:
-            self.show_popup('Error', 'Semua field harus diisi!')
-
-    def show_popup(self, title, content):
-        popup = Popup(
-            title=title,
-            content=Label(text=content),
-            size_hint=(None, None),
-            size=(400, 200)
-        )
-        popup.open()
-
-    def select_image(self):
-        # Open ImageChooserPopup
-        popup = ImageChooserPopup(callback=self.on_image_selected)
-        popup.open()
-
-    def on_image_selected(self, selected_image_path):
-        self.selected_image_path = selected_image_path
-        self.ids.image_preview.source = self.selected_image_path  # Set the selected image to the preview
-        self.ids.image_preview.reload()  # Reload the image preview
-        self.show_popup('Gambar Dipilih', f'Gambar yang dipilih: {self.selected_image_path}')
-
-    def cancel(self):
-        self.manager.current = 'akun_screen'

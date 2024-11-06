@@ -7,7 +7,7 @@ from halaman.register import RegisterScreen
 from halaman.pilih_toko import PilihTokoScreen
 from halaman.toko import TokoScreen
 from halaman.pesanan import PesananScreen
-from halaman.akun import AkunScreen, EditAkun
+from halaman.akun import AkunScreen
 from halaman.hasil_pencarian import PencarianScreen
 from halaman.detail_produk import DetailScreen
 from halaman.keranjang import KeranjangScreen
@@ -49,8 +49,6 @@ class MyApp(App):
         sm.add_widget(DetailScreen(name='detail'))
         sm.add_widget(KeranjangScreen(name='keranjang'))
         sm.add_widget(ChatScreen(name='chat'))
-        sm.add_widget(EditAkun(name='update_user'))
-        
 
         sm.current = 'login'
 
