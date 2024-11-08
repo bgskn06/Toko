@@ -7,8 +7,8 @@
 
     BoxLayout:
         orientation: 'vertical'
-        padding: 10
-        spacing: 10
+        # padding: 10
+        # spacing: 10
 
         Label:
             text: 'Akun Saya'
@@ -75,37 +75,44 @@
             Button:
                 text: 'Update'
                 on_press: root.update_user()
-
-        # Navigasi Bawah
+        
+         # Navigasi Bawah
         BoxLayout:
             size_hint_y: None
             height: '60dp'
-            padding: [20, 20]
-            spacing: 10
+            padding: [20, 20]  
+            spacing: 10        
 
             Button:
                 on_press: 
+                    print("Tombol Home")
                     app.root.current = 'home'
                 size_hint: None, None
+                size_hint_x: 1
                 width: '30dp'
                 height: '30dp'
                 background_normal: ''
                 Image:
                     source: 'asset/home.png'
+                    keep_ratio: True
+                    allow_stretch: False
                     size_hint: None, None
                     width: '25dp'
                     height: '25dp'
                     center: self.parent.center
-
             Button:
                 on_press: 
+                    print("Tombol Toko")
                     app.root.current = 'toko'
                 size_hint: None, None
+                size_hint_x: 1
                 width: '30dp'
                 height: '30dp'
                 background_normal: ''
                 Image:
                     source: 'asset/toko.png'
+                    keep_ratio: True
+                    allow_stretch: False
                     size_hint: None, None
                     width: '25dp'
                     height: '25dp'
@@ -113,27 +120,34 @@
 
             Button:
                 on_press: 
+                    print("Tombol Histori")
                     app.root.current = "pesanan"
-                size_hint: None, None
+                size_hint_x: 1
                 width: '30dp'
                 height: '30dp'
                 background_normal: ''
                 Image:
                     source: 'asset/histori.png'
+                    keep_ratio: True
+                    allow_stretch: False
                     size_hint: None, None
                     width: '25dp'
                     height: '25dp'
                     center: self.parent.center
-
+            
             Button:
                 on_press: 
+                    print("Tombol Akun")
                     app.root.current = "akun"
                 size_hint: None, None
+                size_hint_x: 1
                 width: '30dp'
                 height: '30dp'
                 background_normal: ''
                 Image:
                     source: 'asset/logo.png'
+                    keep_ratio: True
+                    allow_stretch: False
                     size_hint: None, None
                     width: '25dp'
                     height: '25dp'
@@ -170,21 +184,6 @@
                 Rectangle:
                     pos: self.pos
                     size: self.size
-        BoxLayout:
-            size_hint_y: None
-            height: 40
-            spacing: 10
-
-            Button:
-                text: 'Pilih Gambar'
-                size_hint_x: 0.5
-                on_press: root.select_image()
-
-            Button:
-                text: 'Hapus Gambar'
-                size_hint_x: 0.5
-                on_press: root.clear_image()
-
         BoxLayout:
             size_hint_y: None
             height: 40
