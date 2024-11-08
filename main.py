@@ -51,14 +51,11 @@ class MyApp(App):
         sm.add_widget(DetailScreen(name='detail'))
         sm.add_widget(KeranjangScreen(name='keranjang'))
         sm.add_widget(ChatScreen(name='chat'))
-<<<<<<< HEAD
-        sm.add_widget(EditAkun(name='update_user'))
+        # sm.add_widget(EditAkun(name='update_user'))
         sm.add_widget(ProductList(name='product_list'))
         sm.add_widget(AddProduct(name='add_product'))
         sm.add_widget(EditProduct(name='edit_product'))
         
-=======
->>>>>>> 2977d8a33b01985f96807b91346719b650c403a2
 
         sm.current = 'login'
 
