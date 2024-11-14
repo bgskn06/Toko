@@ -24,3 +24,18 @@ class Database:
             print("User data updated successfully.")
         except Exception as e:
             print(f"Error updating user data: {e}")
+            
+    @staticmethod
+    def get_admin_users():
+        """Mengambil daftar pengguna dengan peran admin dari Firebase."""
+        try:
+            users = Database.db.child("users").get()
+            if users.val():
+                # Filter hanya untuk pengguna dengan peran admin
+                admin_users = {uid: data for uid, data in users.val().items() if data.get("role") == "admin"}
+                return admin_users
+            return {}
+        except Exception as e:
+            print(f"Error getting admin users: {e}")
+            return {}
+   
