@@ -9,6 +9,7 @@ from kivy.uix.image import AsyncImage
 from kivy.uix.filechooser import FileChooserIconView
 from database import Database
 from storage import StorageManager
+from kivy.app import App
 
 class ProductItem(BoxLayout):
     def __init__(self, product_id, product_data, delete_callback, edit_callback, **kwargs):
@@ -202,6 +203,13 @@ class AddProduct(Screen):
         self.selected_image = None
         self.image_preview.source = ''
     
+    def load_account_info(self):
+        user_id = App.get_running_app().user_id
+        if user_id:
+            Database.get_user(user_id)
+        else:
+            self.show_popup('Error', 'User ID tidak ditemukan.')
+    
     def add_product(self):
         nama = self.name_input.text.strip()
         harga = self.price_input.text.strip()
@@ -212,7 +220,10 @@ class AddProduct(Screen):
                 harga_float = float(harga)
                 stok_int = int(stok)
                 
-                # Upload image if selected
+                # Dapatkan user_id dari aplikasi yang sedang berjalan
+                user_id = App.get_running_app().user_id  # Ambil ID user yang sedang login
+                
+                # Upload image jika dipilih
                 image_url = None
                 image_path = None
                 if self.selected_image:
@@ -221,18 +232,20 @@ class AddProduct(Screen):
                         image_url = result["url"]
                         image_path = result["path"]
                 
-                # Create product data
+                # Buat data produk dengan menambahkan user_id yang menambahkan produk
                 product_data = {
                     'nama': nama,
                     'harga': harga_float,
                     'stok': stok_int,
                     'image_url': image_url,
-                    'image_path': image_path
+                    'image_path': image_path,
+                    'created_by': user_id  # Menambahkan user_id yang menambahkan produk
                 }
                 
+                # Simpan produk ke database
                 Database.add_product(product_data)
                 
-                # Clear inputs
+                # Clear input fields setelah produk berhasil ditambahkan
                 self.name_input.text = ''
                 self.price_input.text = ''
                 self.stock_input.text = ''

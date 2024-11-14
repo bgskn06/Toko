@@ -18,6 +18,29 @@ class Database:
         except Exception as e:
             print(f"Error getting products: {e}")
             return []
+        
+    @staticmethod
+    def get_toko_data_by_id(toko_id):
+        try:
+            toko = Database.db.child("toko").child(toko_id).get()
+            if toko.val():
+                return toko.val()  # Mengembalikan data toko jika ditemukan
+            return None
+        except Exception as e:
+            print(f"Error getting toko data: {e}")
+            return None
+                
+    @staticmethod
+    def get_products_by_toko(created_by):
+        try:
+            # Ambil produk berdasarkan created_by
+            products = Database.db.child("products").order_by_child("created_by").equal_to(created_by).get()
+            if products.each():
+                return [(product.key(), product.val()) for product in products.each()]
+            return []
+        except Exception as e:
+            print(f"Error getting products by toko: {e}")
+            return []   
 
     @staticmethod
     def add_product(product_data):

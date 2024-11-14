@@ -72,6 +72,7 @@
 
                 # GridLayout untuk menambahkan elemen dengan gambar dan teks
                 GridLayout:
+                    id: product_list  # ID baru yang akan digunakan untuk menampung produk
                     cols: 3  # Atur jumlah kolom dalam grid
                     row_default_height: 200
                     row_force_default: True
@@ -80,6 +81,7 @@
                     padding: 10
                     spacing: 10
 
+                    # Contoh produk (ini bisa digantikan dengan widget produk dinamis dari database)
                     BoxLayout:
                         orientation: 'vertical'
                         padding: 10
@@ -89,94 +91,15 @@
                             Line:
                                 width: 1.5
                                 rounded_rectangle: (self.x, self.y, self.width, self.height, 10)  # Border melengkung dengan radius 10
-
-                        Image:
-                            source: 'asset/gas.png'
-                            size_hint: None, None
-                            size: 100, 100
-
-                        Label:
-                            text: 'Gas 3kg'
-                            color: 0, 0, 0, 1
-                            halign: 'center'
-                            valign: 'center'
-                            text_size: self.size
                         
                         Button:
                             on_press: 
                                 print("Tombol Pilih")
                                 app.root.current = "detail"
+                                root.selected_user_id = 'user_123'  # Set `created_by` atau `selected_user_id` berdasarkan yang dipilih
                             text: 'Pilih'
                             size_hint_y: None
                             height: '30dp'
-
-                    BoxLayout:
-                        orientation: 'vertical'
-                        padding: 10
-                        canvas.before:
-                            Color:
-                                rgb: 0, 0, 0  # Warna border hitam
-                            Line:
-                                width: 1.5
-                                rounded_rectangle: (self.x, self.y, self.width, self.height, 10)  # Border melengkung dengan radius 10
-
-                        Image:
-                            source: 'asset/minyak.png'
-                            size_hint: None, None
-                            size: 100, 100
-
-                        Label:
-                            text: 'Minyak Sunco'
-                            color: 0, 0, 0, 1
-                            halign: 'center'
-                            valign: 'center'
-                            text_size: self.size
-
-                    BoxLayout:
-                        orientation: 'vertical'
-                        padding: 10
-                        canvas.before:
-                            Color:
-                                rgb: 0, 0, 0  # Warna border hitam
-                            Line:
-                                width: 1.5
-                                rounded_rectangle: (self.x, self.y, self.width, self.height, 10)  # Border melengkung dengan radius 10
-
-                        Image:
-                            source: 'asset/Gula.png'
-                            size_hint: None, None
-                            size: 100, 100
-
-                        Label:
-                            text: 'Gulaku'
-                            color: 0, 0, 0, 1
-                            halign: 'center'
-                            valign: 'center'
-                            text_size: self.size
-
-                    BoxLayout:
-                        orientation: 'vertical'
-                        padding: 10
-                        canvas.before:
-                            Color:
-                                rgb: 0, 0, 0  # Warna border hitam
-                            Line:
-                                width: 1.5
-                                rounded_rectangle: (self.x, self.y, self.width, self.height, 10)  # Border melengkung dengan radius 10
-
-                        Image:
-                            source: 'asset/Beras.png'
-                            size_hint: None, None
-                            size: 100, 100
-
-                        Label:
-                            text: 'Beras'
-                            color: 0, 0, 0, 1
-                            halign: 'center'
-                            valign: 'center'
-                            text_size: self.size
-
-                        # Tambahkan lebih banyak konten jika diperlukan
 
         # Navigasi Bawah
         BoxLayout:
