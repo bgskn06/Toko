@@ -1,6 +1,6 @@
 #:kivy 2.3.0
 
-<AkunScreen>:
+<AdminScreen>:
     input_email: input_email
     input_alamat: input_alamat
     input_noHp: input_noHp
@@ -117,35 +117,17 @@
                     text: 'Update'
                     on_press: root.update_user()
 
-        
-         # Navigasi Bawah
+        # Navigasi Bawah
         BoxLayout:
             size_hint_y: None
             height: '60dp'
-            padding: [20, 20]  
-            spacing: 10        
+            padding: [20, 20]
+            spacing: 10
 
             Button:
                 on_press: 
-                    print("Tombol Home")
-                    app.root.current = 'home'
-                size_hint: None, None
-                size_hint_x: 1
-                width: '30dp'
-                height: '30dp'
-                background_normal: ''
-                Image:
-                    source: 'asset/home.png'
-                    keep_ratio: True
-                    allow_stretch: False
-                    size_hint: None, None
-                    width: '25dp'
-                    height: '25dp'
-                    center: self.parent.center
-            Button:
-                on_press: 
-                    print("Tombol Toko")
-                    app.root.current = 'toko'
+                    print("Toko Admin")
+                    app.root.current = 'product_list'
                 size_hint: None, None
                 size_hint_x: 1
                 width: '30dp'
@@ -159,28 +141,11 @@
                     width: '25dp'
                     height: '25dp'
                     center: self.parent.center
-
-            Button:
-                on_press: 
-                    print("Tombol Histori")
-                    app.root.current = "pesanan"
-                size_hint_x: 1
-                width: '30dp'
-                height: '30dp'
-                background_normal: ''
-                Image:
-                    source: 'asset/histori.png'
-                    keep_ratio: True
-                    allow_stretch: False
-                    size_hint: None, None
-                    width: '25dp'
-                    height: '25dp'
-                    center: self.parent.center
             
             Button:
                 on_press: 
                     print("Tombol Akun")
-                    app.root.current = "akun"
+                    app.root.current = "admin"
                 size_hint: None, None
                 size_hint_x: 1
                 width: '30dp'
@@ -194,85 +159,3 @@
                     width: '25dp'
                     height: '25dp'
                     center: self.parent.center
-
-
-<EditAkunScreen>:
-    input_email: input_email
-    input_alamat: input_alamat
-    input_noHp: input_noHp
-
-    BoxLayout:
-        orientation: 'vertical'
-        padding: 10
-        spacing: 10
-
-        Label:
-            text: 'Edit Akun'
-            size_hint_y: None
-            height: 50
-            font_size: 24
-            halign: 'center'
-
-        AsyncImage:
-            id: image_preview
-            source: ''
-            allow_stretch: True
-            keep_ratio: True
-            size_hint_y: None
-            height: 150
-            canvas.before:
-                Color:
-                    rgba: 0.9, 0.9, 0.9, 1
-                Rectangle:
-                    pos: self.pos
-                    size: self.size
-        BoxLayout:
-            size_hint_y: None
-            height: 40
-            spacing: 10
-
-            Button:
-                text: 'Pilih Gambar'
-                size_hint_x: 0.5
-                on_press: root.select_image()
-
-            Button:
-                text: 'Hapus Gambar'
-                size_hint_x: 0.5
-                on_press: root.clear_image()
-
-        TextInput:
-            id: input_email
-            hint_text: 'Masukkan Email'
-            size_hint_y: None
-            height: 40
-            multiline: False
-
-        TextInput:
-            id: input_alamat
-            hint_text: 'Masukkan Alamat'
-            size_hint_y: None
-            height: 40
-            multiline: False
-
-        TextInput:
-            id: input_noHp
-            hint_text: 'Masukkan No Hp'
-            size_hint_y: None
-            height: 40
-            multiline: False
-
-        BoxLayout:
-            size_hint_y: None
-            height: 50
-            spacing: 10
-
-            Button:
-                text: 'Batal'
-                on_press: root.cancel()
-
-            Button:
-                text: 'Update'
-                on_press: root.update_user()
-
-        

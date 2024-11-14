@@ -13,6 +13,7 @@ from halaman.detail_produk import DetailScreen
 from halaman.keranjang import KeranjangScreen
 from halaman.chat import ChatScreen
 from halaman.admin.product import ProductList, AddProduct, EditProduct
+from halaman.admin.admin import AdminScreen
 
 from kivy.lang import Builder
 from kivy.core.window import Window
@@ -38,6 +39,7 @@ class MyApp(App):
         Builder.load_file(os.path.join(kv_path, 'keranjangscreen.kv'))
         Builder.load_file(os.path.join(kv_path, 'chatscreen.kv'))
         Builder.load_file(os.path.join(kv_path, 'product.kv'))
+        Builder.load_file(os.path.join(kv_path, 'adminscreen.kv'))
 
         sm = MyScreenManager()
         sm.add_widget(LoginScreen(name='login'))
@@ -55,6 +57,7 @@ class MyApp(App):
         sm.add_widget(ProductList(name='product_list'))
         sm.add_widget(AddProduct(name='add_product'))
         sm.add_widget(EditProduct(name='edit_product'))
+        sm.add_widget(AdminScreen(name='admin'))
         
 
         sm.current = 'login'

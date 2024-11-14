@@ -27,6 +27,49 @@
             height: 50
             on_press: root.show_add_product()
 
+        # Navigasi Bawah
+        BoxLayout:
+            size_hint_y: None
+            height: '60dp'
+            padding: [20, 20]  
+            spacing: 10        
+
+            Button:
+                on_press: 
+                    print("Toko Admin")
+                    app.root.current = 'product_list'
+                size_hint: None, None
+                size_hint_x: 1
+                width: '30dp'
+                height: '30dp'
+                background_normal: ''
+                Image:
+                    source: 'asset/toko.png'
+                    keep_ratio: True
+                    allow_stretch: False
+                    size_hint: None, None
+                    width: '25dp'
+                    height: '25dp'
+                    center: self.parent.center
+            
+            Button:
+                on_press: 
+                    print("Tombol Akun")
+                    app.root.current = "admin"
+                size_hint: None, None
+                size_hint_x: 1
+                width: '30dp'
+                height: '30dp'
+                background_normal: ''
+                Image:
+                    source: 'asset/logo.png'
+                    keep_ratio: True
+                    allow_stretch: False
+                    size_hint: None, None
+                    width: '25dp'
+                    height: '25dp'
+                    center: self.parent.center
+
 <AddProduct>:
     name_input: name_input
     price_input: price_input
@@ -206,3 +249,4 @@
             Button:
                 text: 'Update'
                 on_press: root.update_product()
+
