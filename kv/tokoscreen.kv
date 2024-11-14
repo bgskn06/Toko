@@ -71,69 +71,69 @@
                 size_hint_y: None
                 height: self.minimum_height
 
-                # Konten pertama (card toko)
-                BoxLayout:
-                    orientation: 'horizontal'
-                    padding: [10, 10]
-                    spacing: 10
-                    size_hint_y: None
-                    height: '80dp'  # Tetap menjaga tinggi card yang sama
+                # # Konten pertama (card toko)
+                # BoxLayout:
+                #     orientation: 'horizontal'
+                #     padding: [10, 10]
+                #     spacing: 10
+                #     size_hint_y: None
+                #     height: '80dp'  # Tetap menjaga tinggi card yang sama
 
-                    # Menambahkan border dengan Canvas
-                    canvas.before:
-                        Color:
-                            rgba: 0, 0, 0, 1  # Warna border hitam
-                        Line:
-                            width: 0.5  # Ketebalan border
-                            rounded_rectangle: (self.x, self.y, self.width, self.height, 10)  # Sudut membulat
+                #     # Menambahkan border dengan Canvas
+                #     canvas.before:
+                #         Color:
+                #             rgba: 0, 0, 0, 1  # Warna border hitam
+                #         Line:
+                #             width: 0.5  # Ketebalan border
+                #             rounded_rectangle: (self.x, self.y, self.width, self.height, 10)  # Sudut membulat
 
-                    # Logo Toko di sebelah kiri
-                    Image:
-                        source: 'asset/tokoA.png'  # Ganti dengan path logo toko Anda
-                        size_hint: None, None
-                        width: '78dp'
-                        height: '78dp'
-                        allow_stretch: True
-                        keep_ratio: True
-                        pos_hint: {'center_y': 0.5}
+                    # # Logo Toko di sebelah kiri
+                    # Image:
+                    #     source: 'asset/tokoA.png'  # Ganti dengan path logo toko Anda
+                    #     size_hint: None, None
+                    #     width: '78dp'
+                    #     height: '78dp'
+                    #     allow_stretch: True
+                    #     keep_ratio: True
+                    #     pos_hint: {'center_y': 0.5}
 
-                    # Nama Toko dan Alamat di tengah
-                    BoxLayout:
-                        orientation: 'vertical'
-                        spacing: 5
-                        size_hint_y: None
-                        height: '60dp'
-                        pos_hint: {'center_y': 0.5}
+                    # # Nama Toko dan Alamat di tengah
+                    # BoxLayout:
+                    #     orientation: 'vertical'
+                    #     spacing: 5
+                    #     size_hint_y: None
+                    #     height: '60dp'
+                    #     pos_hint: {'center_y': 0.5}
 
-                        Label:
-                            text: 'Nama Toko'  # Ganti dengan nama toko Anda
-                            font_size: '16sp'
-                            bold: True
-                            color: 0, 0, 0, 1  # Warna hitam untuk teks
-                            size_hint_y: None
-                            height: '30dp'
-                            halign: 'left'
-                            valign: 'middle'
-                            text_size: self.size
+                    #     Label:
+                    #         text: 'Nama Toko'  # Ganti dengan nama toko Anda
+                    #         font_size: '16sp'
+                    #         bold: True
+                    #         color: 0, 0, 0, 1  # Warna hitam untuk teks
+                    #         size_hint_y: None
+                    #         height: '30dp'
+                    #         halign: 'left'
+                    #         valign: 'middle'
+                    #         text_size: self.size
 
-                        Label:
-                            text: 'Alamat Toko'  # Ganti dengan alamat toko Anda
-                            font_size: '14sp'
-                            color: 0, 0, 0, 1  # Warna hitam untuk teks
-                            size_hint_y: None
-                            height: '30dp'
-                            halign: 'left'
-                            valign: 'middle'
-                            text_size: self.size
+                    #     Label:
+                    #         text: 'Alamat Toko'  # Ganti dengan alamat toko Anda
+                    #         font_size: '14sp'
+                    #         color: 0, 0, 0, 1  # Warna hitam untuk teks
+                    #         size_hint_y: None
+                    #         height: '30dp'
+                    #         halign: 'left'
+                    #         valign: 'middle'
+                    #         text_size: self.size
 
-                    # Tombol Pilih di sebelah kanan
-                    Button:
-                        text: 'Pilih'
-                        size_hint: None, None
-                        size_hint_x: None
-                        width: '70dp'  # Atur lebar tombol pilih sesuai kebutuhan
-                        height: '40dp'
-                        on_press: app.root.current = 'pilihtoko'  # Aksi ketika tombol diklik
+                    # # Tombol Pilih di sebelah kanan
+                    # Button:
+                    #     text: 'Pilih'
+                    #     size_hint: None, None
+                    #     size_hint_x: None
+                    #     width: '70dp'  # Atur lebar tombol pilih sesuai kebutuhan
+                    #     height: '40dp'
+                    #     on_press: app.root.current = 'pilihtoko'  # Aksi ketika tombol diklik
 
                 # Tambahkan lebih banyak konten jika diperlukan
 
