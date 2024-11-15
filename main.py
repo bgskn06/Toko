@@ -14,18 +14,24 @@ from halaman.keranjang import KeranjangScreen
 from halaman.chat import ChatScreen
 from halaman.admin.product import ProductList, AddProduct, EditProduct
 from halaman.admin.admin import AdminScreen
-
 from kivy.lang import Builder
 from kivy.core.window import Window
 
+# Pastikan untuk import Cart jika diperlukan di sini
+from halaman.keranjang import Cart  # Sesuaikan dengan lokasi Cart class Anda
 
 class MyScreenManager(ScreenManager):
     pass
 
 class MyApp(App):
     def build(self):
-        Window.size = (360,640)
+        Window.size = (360, 640)
         Window.clearcolor = (1, 1, 1, 1)
+        
+        # Membuat instance Cart dan menyimpannya dalam aplikasi
+        self.cart = Cart()  # Inisialisasi objek Cart di sini
+
+        # Memuat file kv
         kv_path = os.path.join(os.path.dirname(__file__), 'kv')
         Builder.load_file(os.path.join(kv_path, 'loginscreen.kv'))
         Builder.load_file(os.path.join(kv_path, 'pilihtokoscreen.kv'))
@@ -53,12 +59,10 @@ class MyApp(App):
         sm.add_widget(DetailScreen(name='detail_product'))
         sm.add_widget(KeranjangScreen(name='keranjang'))
         sm.add_widget(ChatScreen(name='chat'))
-        # sm.add_widget(EditAkun(name='update_user'))
         sm.add_widget(ProductList(name='product_list'))
         sm.add_widget(AddProduct(name='add_product'))
         sm.add_widget(EditProduct(name='edit_product'))
         sm.add_widget(AdminScreen(name='admin'))
-        
 
         sm.current = 'login'
 

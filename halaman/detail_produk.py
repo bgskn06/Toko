@@ -6,8 +6,13 @@ from kivy.app import App
 from database import Database
 from kivy.uix.popup import Popup
 from kivy.uix.button import Button
+from halaman.keranjang import Cart  # Pastikan Anda mengimpor Cart
 
 class DetailScreen(Screen):
+    def __init__(self, **kwargs):
+        super().__init__(**kwargs)
+        self.cart = Cart()  # Inisialisasi objek Cart
+    
     def on_enter(self):
         self.load_product_details()
 
@@ -42,6 +47,21 @@ class DetailScreen(Screen):
         self.ids.product_image.source = image_url  # Pastikan sumber adalah string, bukan objek AsyncImage
         self.ids.product_image.reload()  # Pastikan gambar dimuat ulang
 
+    def add_to_cart(self):
+        """Menambahkan produk ke keranjang ketika tombol Pesan ditekan"""
+        app = App.get_running_app()
+        product_id = app.selected_product_id  # Mengambil ID produk yang dipilih
+        
+        if product_id:
+            product_data = Database.get_product_by_id(product_id)  # Ambil data produk dari database
+            if product_data:
+                self.cart.add_item(product_data)  # Menambahkan produk ke keranjang
+                self.show_popup("Sukses", "Produk berhasil ditambahkan ke keranjang!")
+            else:
+                self.show_popup("Error", "Produk tidak ditemukan.")
+        else:
+            self.show_popup("Error", "ID produk tidak valid.")
+    
     def show_popup(self, title, message):
         """Menampilkan popup dengan pesan"""
         content = BoxLayout(orientation='vertical')
