@@ -15,11 +15,6 @@ class AuthService:
             user = auth.sign_in_with_email_and_password(email, password)
             self.user_id = user['localId']
             role = db.child("users").child(self.user_id).child("role").get().val()
-
-            # if role != 'admin':
-            #     print("Access Denied: Only admins can access this application.")
-            #     return False, "Access Denied: Only admins can access this application."
-            
             App.get_running_app().user_role = role
             return True, "Login successful"
         except Exception as e:

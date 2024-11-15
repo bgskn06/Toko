@@ -20,6 +20,18 @@ class Database:
             return []
         
     @staticmethod
+    def get_product_by_id(product_id):
+        """Mengambil data produk berdasarkan ID produk"""
+        try:
+            product = Database.db.child("products").child(product_id).get()
+            if product.val():
+                return product.val()  # Mengembalikan data produk jika ditemukan
+            return None
+        except Exception as e:
+            print(f"Error getting product by id: {e}")
+            return None
+        
+    @staticmethod
     def get_toko_data_by_id(toko_id):
         try:
             toko = Database.db.child("toko").child(toko_id).get()

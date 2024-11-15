@@ -50,7 +50,7 @@ class MyApp(App):
         sm.add_widget(PesananScreen(name='pesanan'))
         sm.add_widget(AkunScreen(name='akun'))
         sm.add_widget(PencarianScreen(name='pencarian'))
-        sm.add_widget(DetailScreen(name='detail'))
+        sm.add_widget(DetailScreen(name='detail_product'))
         sm.add_widget(KeranjangScreen(name='keranjang'))
         sm.add_widget(ChatScreen(name='chat'))
         # sm.add_widget(EditAkun(name='update_user'))

@@ -94,15 +94,110 @@ class ProductItem(BoxLayout):
         )
         popup.open()
 
+# class ProductList(Screen):
+#     container = ObjectProperty(None)
+    
+#     def on_enter(self):
+#         self.load_products()
+    
+#     def load_products(self):
+#         self.container.clear_widgets()
+#         products = Database.get_all_products()
+        
+#         if products:
+#             for product_id, product_data in products:
+#                 product_item = ProductItem(
+#                     product_id,
+#                     product_data,
+#                     self.delete_product,
+#                     self.edit_product
+#                 )
+#                 self.container.add_widget(product_item)
+#         else:
+#             self.container.add_widget(
+#                 Label(
+#                     text="Tidak ada produk tersedia",
+#                     size_hint_y=None,
+#                     height=100
+#                 )
+#             )
+    
+#     def show_add_product(self):
+#         self.manager.current = 'add_product'
+
+#     def edit_product(self, product_id, product_data):
+#         edit_screen = self.manager.get_screen('edit_product')
+#         edit_screen.set_product(product_id, product_data)
+#         self.manager.current = 'edit_product'
+
+#     def delete_product(self, product_id):
+#         confirm_popup = Popup(
+#             title='Konfirmasi',
+#             size_hint=(None, None),
+#             size=(300, 200)
+#         )
+        
+#         content = BoxLayout(orientation='vertical', padding=10, spacing=10)
+#         content.add_widget(Label(text='Apakah Anda yakin ingin\nmenghapus produk ini?'))
+        
+#         buttons = BoxLayout(size_hint_y=None, height=40, spacing=10)
+        
+#         cancel_btn = Button(text='Batal')
+#         cancel_btn.bind(on_press=confirm_popup.dismiss)
+        
+#         def confirm_delete(instance):
+#             try:
+#                 # Get product data to delete image if exists
+#                 products = Database.get_all_products()
+#                 product_data = next((data for pid, data in products if pid == product_id), None)
+                
+#                 if product_data and 'image_path' in product_data:
+#                     StorageManager.delete_image(product_data['image_path'])
+                
+#                 Database.delete_product(product_id)
+#                 self.load_products()
+#                 confirm_popup.dismiss()
+#                 self.show_popup('Sukses', 'Produk berhasil dihapus!')
+#             except Exception as e:
+#                 confirm_popup.dismiss()
+#                 self.show_popup('Error', f'Gagal menghapus produk: {str(e)}')
+        
+#         confirm_btn = Button(text='Hapus', background_color=(0.9, 0.3, 0.3, 1))
+#         confirm_btn.bind(on_press=confirm_delete)
+        
+#         buttons.add_widget(cancel_btn)
+#         buttons.add_widget(confirm_btn)
+        
+#         content.add_widget(buttons)
+#         confirm_popup.content = content
+#         confirm_popup.open()
+
+#     def show_popup(self, title, content):
+#         popup = Popup(
+#             title=title,
+#             content=Label(text=content),
+#             size_hint=(None, None),
+#             size=(400, 200)
+#         )
+#         popup.open()
+
 class ProductList(Screen):
     container = ObjectProperty(None)
-    
+
     def on_enter(self):
         self.load_products()
-    
+
     def load_products(self):
         self.container.clear_widgets()
-        products = Database.get_all_products()
+
+        # Mengambil user_id dari aplikasi
+        user_uid = App.get_running_app().user_id
+        if not user_uid:
+            self.show_popup("Error", "Pengguna tidak terdaftar. Silakan login terlebih dahulu.")
+            return
+
+        # Mendapatkan produk yang dibuat oleh pengguna (berdasarkan user_uid)
+        products = Database.get_products_by_toko(user_uid)
         
         if products:
             for product_id, product_data in products:

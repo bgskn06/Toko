@@ -1,4 +1,3 @@
-# pilih_toko.py
 from kivy.uix.screenmanager import Screen
 from kivy.uix.boxlayout import BoxLayout
 from kivy.uix.label import Label
@@ -6,7 +5,8 @@ from kivy.uix.button import Button
 from kivy.uix.image import AsyncImage
 from kivy.app import App
 from database import Database 
-from kivy.uix.popup import Popup # Pastikan import Database yang benar
+from kivy.uix.popup import Popup
+from kivy.uix.screenmanager import ScreenManager
 
 class PilihTokoScreen(Screen):
     def on_enter(self):
@@ -61,10 +61,15 @@ class PilihTokoScreen(Screen):
                 self.show_popup("Info", "Tidak ada produk untuk toko ini.")
         else:
             self.show_popup("Error", "Toko yang dipilih tidak valid.")
+
     def pilih_product(self, product_id):
-        print(f"Produk dengan ID {product_id} dipilih.")
-        # Lanjutkan aksi ketika produk dipilih (misalnya navigasi ke detail produk)
-        
+        # Menyimpan ID produk yang dipilih
+        app = App.get_running_app()
+        app.selected_product_id = product_id
+
+        # Pindah ke layar DetailProductScreen
+        self.manager.current = 'detail_product'
+
     def show_popup(self, title, message):
         """Menampilkan popup dengan pesan"""
         content = BoxLayout(orientation='vertical')
